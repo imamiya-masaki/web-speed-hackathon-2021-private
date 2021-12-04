@@ -68,6 +68,66 @@ export function useInfiniteFetch(apiPath, fetcher) {
     });
   }, [apiPath, fetcher]);
 
+// const allPosts = {
+//   isLoading: Boolean,
+//   data: Array,
+//   offset: Number
+// };
+
+  const fetchPosts = React.useCallback(() => {
+    const { isLoading, offset } = internalRef.current;
+    if (isLoading) {
+      return;
+    }
+    setResult((cur) => ({
+      ...cur,
+      isLoading: true,
+    }));
+    internalRef.current = {
+      isLoading: true,
+      offset,
+    };
+
+    const promise = fetcher(apiPath);
+    if (!window.allPosts?.data ) {
+      promise.then((allData) => {
+        window.allPosts = {data: allData};
+        setResult((cur) => ({
+          ...cur,
+          data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
+          isLoading: false,
+        }));
+        internalRef.current = {
+          isLoading: false,
+          offset: offset + LIMIT,
+        };
+      })
+      promise.catch((error) => {
+        setResult((cur) => ({
+          ...cur,
+          error,
+          isLoading: false,
+        }));
+        internalRef.current = {
+          isLoading: false,
+          offset,
+        };
+      });
+    } else {
+      const allData = window.allPosts.data;
+        setResult((cur) => ({
+          ...cur,
+          data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
+          isLoading: false,
+        }));
+        internalRef.current = {
+          isLoading: false,
+          offset: offset + LIMIT,
+        };
+    }
+  }, [apiPath, fetcher]);
+
+
   React.useEffect(() => {
     setResult(() => ({
       data: [],
@@ -85,5 +145,6 @@ export function useInfiniteFetch(apiPath, fetcher) {
   return {
     ...result,
     fetchMore,
+    fetchPosts
   };
 }
