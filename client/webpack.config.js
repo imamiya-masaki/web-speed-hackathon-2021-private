@@ -12,7 +12,10 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 /** @type {import('webpack').Configuration} */
 const config = {
   devServer: {
-    contentBase: [PUBLIC_PATH, UPLOAD_PATH],
+    // contentBase: [PUBLIC_PATH, UPLOAD_PATH],
+    static: {
+      directory: path.resolve(PUBLIC_PATH, UPLOAD_PATH),
+    },
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 8080,
