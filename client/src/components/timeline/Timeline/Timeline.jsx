@@ -9,6 +9,10 @@ import { TimelineItem } from '../TimelineItem';
 
 /** @type {React.VFC<Props>} */
 const Timeline = ({ timeline }) => {
+  /* 
+  ここ見えている範囲のレンダリングをして、それ以外は、アイドル時間中にすうようにしたい
+  バーチャルレンダリング
+  */
   return (
     <section>
       {timeline.map((post) => {

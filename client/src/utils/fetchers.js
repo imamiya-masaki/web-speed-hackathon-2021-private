@@ -26,7 +26,7 @@ async function fetchJSON(url) {
     dataType: 'json',
     method: 'GET',
     url,
-  });
+  })
   return result;
 }
 
