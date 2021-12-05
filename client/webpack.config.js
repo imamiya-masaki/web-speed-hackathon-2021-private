@@ -1,7 +1,8 @@
 const path = require('path');
-
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -71,6 +72,9 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
+    }),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${SRC_PATH}/**/*`,  { nodir: true }),
     }),
     new HtmlWebpackPlugin({
       inject: false,
