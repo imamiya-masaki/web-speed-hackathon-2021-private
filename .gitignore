@@ -198,3 +198,8 @@ $RECYCLE.BIN/
 
 tmp
 upload
+
+#faunaDB
+secret.json
+# Local Netlify folder
+.netlify
