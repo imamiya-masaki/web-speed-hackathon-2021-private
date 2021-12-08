@@ -10,19 +10,25 @@ import React from 'react';
 /** @type {React.VFC<Props>} */
 const InfiniteScroll = ({ children, fetchMore, items }) => {
   const latestItem = items[items.length - 1];
-
+  let running = false;
   const prevReachedRef = React.useRef(false);
   React.useEffect(() => {
     const handler2 = () => {
-       const isBottom = document.body.getBoundingClientRect().bottom <= window.innerHeight;
-       if (isBottom && !prevReachedRef.current) {
-        // アイテムがないときは追加で読み込まない
-        if (latestItem !== undefined) {
-          fetchMore();
-        }
+      if (running) {
+       return
       }
+      running = true;
+      setTimeout(function() {
+        running = false;
+        const isBottom = document.body.getBoundingClientRect().bottom <= window.innerHeight;
+        if (isBottom && !prevReachedRef.current) {
+          // アイテムがないときは追加で読み込まない
+          if (latestItem !== undefined) {
+            fetchMore();
+          }
+        }
+      }, 80);
     }
-
     // 最初は実行されないので手動で呼び出す
     prevReachedRef.current = false;
     handler2();

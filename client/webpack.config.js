@@ -12,6 +12,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 const config = {
   devServer: {
     // contentBase: [PUBLIC_PATH, UPLOAD_PATH],
+    // http2: true,
     static: {
       directory: PUBLIC_PATH,
     },
