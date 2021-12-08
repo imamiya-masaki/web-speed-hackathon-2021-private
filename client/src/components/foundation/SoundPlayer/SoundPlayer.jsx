@@ -49,7 +49,7 @@ const SoundPlayer = ({ sound }) => {
 
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-300">
-      <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={blobUrl} />
+      <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={blobUrl} async/>
       <div className="p-2">
         <button
           className="flex items-center justify-center w-8 h-8 text-white text-sm bg-blue-600 rounded-full hover:opacity-75"
