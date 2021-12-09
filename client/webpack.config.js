@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -60,6 +62,24 @@ const config = {
       AudioContext: ['standardized-audio-context', 'AudioContext'],
       Buffer: ['buffer', 'Buffer'],
       'window.jQuery': 'jquery',
+    }),
+    new ImageminPlugin({
+      test: /\.(jpg|jpe?g|gif)$/i,
+      plugins: [
+        ImageminMozjpeg({
+          quality: 70,
+          progressive: false,
+        }),
+      ],
+      pngquant: {
+        quality: '70-85',
+      },
+      gifsicle: {
+        interlaced: false,
+        optimizationLevel: 10,
+        colors: 256,
+      },
+      svgo: {}
     }),
     new webpack.EnvironmentPlugin({
       BUILD_DATE: new Date().toISOString(),
