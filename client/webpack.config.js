@@ -15,13 +15,13 @@ const config = {
   devServer: {
     // contentBase: [PUBLIC_PATH, UPLOAD_PATH],
     // http2: true,
-    static: [PUBLIC_PATH, UPLOAD_PATH],
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 8080,
     proxy: {
       '/api': 'http://localhost:3000',
     },
+    static: [PUBLIC_PATH, UPLOAD_PATH],
   },
   devtool: 'inline-source-map',
   entry: {

@@ -1,17 +1,17 @@
 import Router from 'express-promise-router';
 import httpErrors from 'http-errors';
-
+import Log4js from 'log4js';
 import { Comment, Post } from '../../models';
-
+// const logger = Log4js.getLogger();
+// logger.level = "debug"; //これがないと表示されない
 const router = Router();
 
 router.get('/posts', async (req, res) => {
   const posts = await Post.findAll({
     limit: req.query.limit,
     offset: req.query.offset,
-    order: [['id', 'DESC']],
   });
-
+  // logger.debug('posts/', posts);
   return res.status(200).type('application/json').send(posts);
 });
 
@@ -29,7 +29,6 @@ router.get('/posts/:postId/comments', async (req, res) => {
   const posts = await Comment.findAll({
     limit: req.query.limit,
     offset: req.query.offset,
-    order: [['id', 'DESC']],
     where: {
       postId: req.params.postId,
     },
