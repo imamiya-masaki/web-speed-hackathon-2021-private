@@ -13,9 +13,7 @@ const config = {
   devServer: {
     // contentBase: [PUBLIC_PATH, UPLOAD_PATH],
     // http2: true,
-    static: {
-      directory: PUBLIC_PATH,
-    },
+    static: [PUBLIC_PATH, UPLOAD_PATH],
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 8080,
