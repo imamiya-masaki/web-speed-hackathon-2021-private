@@ -49,6 +49,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
         data: [...cur.data, ...allData],
         isLoading: false,
       }));
+      // console.log('result', result, allData, LIMIT, offset);
       internalRef.current = {
         isLoading: false,
         offset: offset + LIMIT,
@@ -92,7 +93,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
     if (!window.allPosts?.data ) {
       promise.then((allData) => {
         window.allPosts = {data: allData};
-        console.log('data', allData);
+        // console.log('data', allData, offset, LIMIT);
         setResult((cur) => ({
           ...cur,
           data: [...cur.data, ...allData],
