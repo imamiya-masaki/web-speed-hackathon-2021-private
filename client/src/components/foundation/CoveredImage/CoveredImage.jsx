@@ -15,9 +15,8 @@ import { fetchBinary } from '../../../utils/fetchers';
  * アスペクト比を維持したまま、要素のコンテンツボックス全体を埋めるように画像を拡大縮小します
  * @type {React.VFC<Props>}
  */
-const CoveredImage = ({ alt, src }) => {
+const CoveredImage = ({ alt, src, height, width }) => {
   const { data, isLoading } = useFetch(src, fetchBinary);
-
   const imageSize = React.useMemo(() => {
     return data !== null ? sizeOf(Buffer.from(data)) : null;
   }, [data]);
@@ -26,24 +25,25 @@ const CoveredImage = ({ alt, src }) => {
     return data !== null ? URL.createObjectURL(new Blob([data])) : null;
   }, [data]);
 
-  const [containerSize, setContainerSize] = React.useState({ height: 0, width: 0 });
+  const [containerSize] = React.useState({ height: height, width: width });
   /** @type {React.RefCallback<HTMLDivElement>} */
-  const callbackRef = React.useCallback((el) => {
-    setContainerSize({
-      height: el?.clientHeight ?? 0,
-      width: el?.clientWidth ?? 0,
-    });
-  }, []);
+  // const callbackRef = React.useCallback((el) => {
+  //   console.log('callbackRef', el, el?.clientHeight, el?.clientWidth, height, width);
+  //   setContainerSize({
+  //     height: el?.clientHeight ?? 0,
+  //     width: el?.clientWidth ?? 0,
+  //   });
+  // }, []);
 
-  if (isLoading || data === null || blobUrl === null) {
-    return null;
-  }
+  // if (isLoading || data === null || blobUrl === null) {
+  //   return null;
+  // }
 
   const containerRatio = containerSize.height / containerSize.width;
   const imageRatio = imageSize?.height / imageSize?.width;
 
   return (
-    <div ref={callbackRef} className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden">
       <img
         alt={alt}
         className={classNames('absolute left-1/2 top-1/2 max-w-none transform -translate-x-1/2 -translate-y-1/2', {
