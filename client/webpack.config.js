@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -22,6 +23,10 @@ const config = {
       '/api': 'http://localhost:3000',
     },
     static: [PUBLIC_PATH, UPLOAD_PATH],
+  },
+  optimization: {
+    minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: []
+    // minimize: true
   },
   devtool: 'inline-source-map',
   entry: {
@@ -85,7 +90,7 @@ const config = {
       BUILD_DATE: new Date().toISOString(),
       // Heroku では SOURCE_VERSION 環境変数から commit hash を参照できます
       COMMIT_HASH: process.env.SOURCE_VERSION || '',
-      NODE_ENV: 'development',
+      NODE_ENV: process.env.NODE_ENV ,
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
