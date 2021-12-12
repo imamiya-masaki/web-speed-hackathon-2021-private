@@ -41,12 +41,12 @@ export function useInfiniteFetch(apiPath, fetcher) {
       offset,
     };
 
-    const promise = fetcher(apiPath);
+    const promise = fetcher(apiPath, {limit: LIMIT, offset: offset});
 
     promise.then((allData) => {
       setResult((cur) => ({
         ...cur,
-        data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
+        data: [...cur.data, ...allData],
         isLoading: false,
       }));
       internalRef.current = {
@@ -92,9 +92,10 @@ export function useInfiniteFetch(apiPath, fetcher) {
     if (!window.allPosts?.data ) {
       promise.then((allData) => {
         window.allPosts = {data: allData};
+        console.log('data', allData);
         setResult((cur) => ({
           ...cur,
-          data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
+          data: [...cur.data, ...allData],
           isLoading: false,
         }));
         internalRef.current = {
