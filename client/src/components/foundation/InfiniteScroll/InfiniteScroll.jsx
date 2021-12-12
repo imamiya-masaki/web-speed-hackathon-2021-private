@@ -20,14 +20,14 @@ const InfiniteScroll = ({ children, fetchMore, items }) => {
       running = true;
       setTimeout(function() {
         running = false;
-        const isBottom = document.body.getBoundingClientRect().bottom <= window.innerHeight;
+        const isBottom = Math.floor(document.body.getBoundingClientRect().bottom - 1) <= window.innerHeight;
         if (isBottom && !prevReachedRef.current) {
           // アイテムがないときは追加で読み込まない
           if (latestItem !== undefined) {
             fetchMore();
           }
         }
-      }, 80);
+      }, 100);
     }
     // 最初は実行されないので手動で呼び出す
     prevReachedRef.current = false;
