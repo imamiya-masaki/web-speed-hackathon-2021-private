@@ -11,20 +11,22 @@ import React from 'react';
 const InfiniteScroll = ({ children, fetchMore, items }) => {
   const latestItem = items[items.length - 1];
   let running = false;
+  let cnt = 0;
   const prevReachedRef = React.useRef(false);
   React.useEffect(() => {
     const handler2 = () => {
-      if (running) {
+      if (running && cnt != 0) {
        return
       }
       running = true;
       setTimeout(function() {
         running = false;
-        const isBottom = Math.floor(document.body.getBoundingClientRect().bottom - 1) <= window.innerHeight;
+        const isBottom = Math.floor(document.body.getBoundingClientRect().bottom) <= Math.floor(window.innerHeight);
         if (isBottom && !prevReachedRef.current) {
           // アイテムがないときは追加で読み込まない
           if (latestItem !== undefined) {
-            fetchMore();
+            const output = fetchMore();
+            cnt++
           }
         }
       }, 100);
