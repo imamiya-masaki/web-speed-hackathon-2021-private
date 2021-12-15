@@ -48,7 +48,6 @@ const TimelineItem = ({ post }) => {
     },
     [post, navigate],
   );
-
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4" onClick={handleClick}>
       <div className="flex pb-4 pt-2 px-2 border-b border-gray-300 sm:px-4">
@@ -57,7 +56,7 @@ const TimelineItem = ({ post }) => {
             className="block w-12 h-12 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-16 sm:h-16"
             to={`/users/${post.user.username}`}
           >
-            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} defer/>
+            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} width="64" height="64" defer/>
           </Link>
         </div>
         <div className="flex-grow flex-shrink min-w-0">

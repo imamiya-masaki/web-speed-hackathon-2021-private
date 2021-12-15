@@ -41,16 +41,16 @@ async function calculate(data) {
 const SoundWaveSVG = ({ soundData }) => {
   const uniqueIdRef = React.useRef(Math.random().toString(16));
   const [{ max, peaks }, setPeaks] = React.useState({ max: 0, peaks: [] });
-      const audioCtx = new AudioContext();
-    const worker = new Worker(new URL('./workerCalculate.js', import.meta.url));
+  const worker = new Worker(new URL('./workerCalculate.js', import.meta.url));
 
   React.useEffect(() => {
     worker.addEventListener('message', ({data: {value}}) => {
       const max = value.maxO;
-      const peaks = value.peaksO
+      const peaks = value.peaksO;
       setPeaks({max, peaks})
     });
     if (soundData) {
+      const audioCtx = new AudioContext();
       new Promise((resolve, reject) => {
         audioCtx.decodeAudioData(soundData.slice(0), resolve, reject);
       }).then(buffer => {

@@ -17,7 +17,7 @@ import { SoundWaveSVG } from '../SoundWaveSVG';
  */
 const SoundPlayer = ({ sound }) => {
   const { data, isLoading } = useFetch(getSoundPath(sound.id), fetchBinary);
-
+  // const data = null;
   const blobUrl = React.useMemo(() => {
     return data !== null ? URL.createObjectURL(new Blob([data])) : null;
   }, [data]);
@@ -43,9 +43,9 @@ const SoundPlayer = ({ sound }) => {
     });
   }, []);
 
-  if (isLoading || data === null || blobUrl === null) {
-    // return null;
-  }
+  // if (isLoading || data === null || blobUrl === null) {
+  //   // return null;
+  // }
 
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-300">
