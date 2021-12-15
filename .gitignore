@@ -198,5 +198,6 @@ $RECYCLE.BIN/
 
 tmp
 upload
+public_origin
 .netlify/
 server/src/secret.json
