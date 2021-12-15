@@ -44,7 +44,7 @@ const SoundPlayer = ({ sound }) => {
   }, []);
 
   if (isLoading || data === null || blobUrl === null) {
-    return null;
+    // return null;
   }
 
   return (
