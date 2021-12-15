@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
@@ -29,7 +31,6 @@ const config = {
   devtool: 'inline-source-map',
   entry: {
     main: [
-      'core-js',
       'regenerator-runtime/runtime',
       'jquery-binarytransport',
       path.resolve(SRC_PATH, './index.css'),
@@ -60,9 +61,10 @@ const config = {
     path: DIST_PATH,
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      AudioContext: ['standardized-audio-context', 'AudioContext'],
+      // AudioContext: ['standardized-audio-context', 'AudioContext'],
       Buffer: ['buffer', 'Buffer'],
       'window.jQuery': 'jquery',
     }),
@@ -79,6 +81,9 @@ const config = {
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
+    new MomentLocalesPlugin({
+      localesToKeep: ['ja'],
+  }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

@@ -50,11 +50,13 @@ const SoundWaveSVG = ({ soundData }) => {
       const peaks = value.peaksO
       setPeaks({max, peaks})
     });
-    new Promise((resolve, reject) => {
-      audioCtx.decodeAudioData(soundData.slice(0), resolve, reject);
-    }).then(buffer => {
-      worker.postMessage({left: buffer.getChannelData(0), rgiht: buffer.getChannelData(1)})
-    })
+    if (soundData) {
+      new Promise((resolve, reject) => {
+        audioCtx.decodeAudioData(soundData.slice(0), resolve, reject);
+      }).then(buffer => {
+        worker.postMessage({left: buffer.getChannelData(0), rgiht: buffer.getChannelData(1)})
+      })
+    }
   }, [soundData]);
 
   return (
