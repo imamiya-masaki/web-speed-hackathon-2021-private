@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ImageminMozjpeg = require('imagemin-mozjpeg');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
@@ -22,9 +20,7 @@ const config = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
-    static: {
-      directory: path.resolve(PUBLIC_PATH, UPLOAD_PATH)
-    },
+    static: [PUBLIC_PATH, UPLOAD_PATH],
   },
   optimization: {
     minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: []
@@ -69,24 +65,6 @@ const config = {
       AudioContext: ['standardized-audio-context', 'AudioContext'],
       Buffer: ['buffer', 'Buffer'],
       'window.jQuery': 'jquery',
-    }),
-    new ImageminPlugin({
-      test: /\.(jpg|jpe?g|gif)$/i,
-      plugins: [
-        ImageminMozjpeg({
-          quality: 70,
-          progressive: false,
-        }),
-      ],
-      pngquant: {
-        quality: '70-85',
-      },
-      gifsicle: {
-        interlaced: false,
-        optimizationLevel: 10,
-        colors: 256,
-      },
-      svgo: {}
     }),
     new webpack.EnvironmentPlugin({
       BUILD_DATE: new Date().toISOString(),
