@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React from 'react';
-
 /**
  * @param {ArrayBuffer} data
  * @returns {Promise<{ max: number, peaks: number[] }}
@@ -13,6 +12,7 @@ async function calculate(data) {
   const buffer = await new Promise((resolve, reject) => {
     audioCtx.decodeAudioData(data.slice(0), resolve, reject);
   });
+  console.log('buffer', buffer, buffer.getChannelData(0), buffer.getChannelData(1), data);
   // 左の音声データの絶対値を取る
   const leftData = _.map(buffer.getChannelData(0), Math.abs);
   // 右の音声データの絶対値を取る
@@ -41,11 +41,20 @@ async function calculate(data) {
 const SoundWaveSVG = ({ soundData }) => {
   const uniqueIdRef = React.useRef(Math.random().toString(16));
   const [{ max, peaks }, setPeaks] = React.useState({ max: 0, peaks: [] });
+      const audioCtx = new AudioContext();
+    const worker = new Worker(new URL('./workerCalculate.js', import.meta.url));
 
   React.useEffect(() => {
-    calculate(soundData).then(({ max, peaks }) => {
-      setPeaks({ max, peaks });
+    worker.addEventListener('message', ({data: {value}}) => {
+      const max = value.maxO;
+      const peaks = value.peaksO
+      setPeaks({max, peaks})
     });
+    new Promise((resolve, reject) => {
+      audioCtx.decodeAudioData(soundData.slice(0), resolve, reject);
+    }).then(buffer => {
+      worker.postMessage({left: buffer.getChannelData(0), rgiht: buffer.getChannelData(1)})
+    })
   }, [soundData]);
 
   return (
