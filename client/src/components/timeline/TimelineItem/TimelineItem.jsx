@@ -48,6 +48,7 @@ const TimelineItem = ({ post }) => {
     },
     [post, navigate],
   );
+
   return (
     <article className="px-1 hover:bg-gray-50 sm:px-4" onClick={handleClick}>
       <div className="flex pb-4 pt-2 px-2 border-b border-gray-300 sm:px-4">
