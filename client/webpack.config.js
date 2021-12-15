@@ -22,7 +22,9 @@ const config = {
     proxy: {
       '/api': 'http://localhost:3000',
     },
-    static: [PUBLIC_PATH, UPLOAD_PATH],
+    static: {
+      directory: path.resolve(PUBLIC_PATH, UPLOAD_PATH)
+    },
   },
   optimization: {
     minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: []
