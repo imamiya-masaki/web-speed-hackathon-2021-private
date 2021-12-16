@@ -16,16 +16,14 @@ import { fetchBinary } from '../../../utils/fetchers';
  * @type {React.VFC<Props>}
  */
 const CoveredImage = ({ alt, src, height, width }) => {
-  const { data, isLoading } = useFetch(src, fetchBinary);
-  const imageSize = React.useMemo(() => {
-    return data !== null ? sizeOf(Buffer.from(data)) : null;
-  }, [data]);
-
-  const blobUrl = React.useMemo(() => {
-    return data !== null ? URL.createObjectURL(new Blob([data])) : null;
-  }, [data]);
-
-  const [containerSize] = React.useState({ height: height, width: width });
+  const [ratioBool, setRatioBool] = React.useState(false) // containerRatio > imageRatioの時true
+  React.useEffect(() => {
+    const img = new Image();
+    img.onload = function () {
+      setRatioBool((height/width) > (img.height/img.width))
+    };
+    img.src = src;
+  },[ratioBool])
   /** @type {React.RefCallback<HTMLDivElement>} */
   // const callbackRef = React.useCallback((el) => {
   //   console.log('callbackRef', el, el?.clientHeight, el?.clientWidth, height, width);
@@ -38,19 +36,15 @@ const CoveredImage = ({ alt, src, height, width }) => {
   // if (isLoading || data === null || blobUrl === null) {
   //   return null;
   // }
-
-  const containerRatio = containerSize.height / containerSize.width;
-  const imageRatio = imageSize?.height / imageSize?.width;
-
   return (
     <div className="relative w-full h-full overflow-hidden">
       <img
         alt={alt}
         className={classNames('absolute left-1/2 top-1/2 max-w-none transform -translate-x-1/2 -translate-y-1/2', {
-          'w-auto h-full': containerRatio > imageRatio,
-          'w-full h-auto': containerRatio <= imageRatio,
+          'w-auto h-full': ratioBool,
+          'w-full h-auto': !ratioBool,
         })}
-        src={blobUrl}
+        src={src}
       />
     </div>
   );
