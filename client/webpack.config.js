@@ -4,6 +4,8 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');   
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -25,7 +27,12 @@ const config = {
     static: [PUBLIC_PATH, UPLOAD_PATH],
   },
   optimization: {
-    minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: []
+    // minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: [],
+    minimizer: 
+    [
+      new TerserPlugin({extractComments: 'all',terserOptions: {compress: {drop_console: true}}}),
+      new UglifyJsPlugin()
+    ]
     // minimize: true
   },
   devtool: 'inline-source-map',
@@ -80,6 +87,12 @@ const config = {
     new HtmlWebpackPlugin({
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
+    }),
+    new CompressionPlugin({
+      test: /\.(css)|(js)$/,
+      compressionOptions: {
+        level: 9
+      }
     }),
     new MomentLocalesPlugin({
       localesToKeep: ['ja'],
