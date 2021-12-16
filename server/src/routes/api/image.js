@@ -11,7 +11,7 @@ import { UPLOAD_PATH } from '../../paths';
 // const logger = Log4js.getLogger();
 // logger.level = "debug"; //これがないと表示されない
 // 変換した画像の拡張子
-const EXTENSION = 'jpg';
+const EXTENSION = 'webp';
 
 const router = Router();
 
