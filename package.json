@@ -4,7 +4,8 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "start": "yarn workspace @web-speed-hackathon-2021/server start",
-    "dev": "yarn workspace @web-speed-hackathon-2021/client develop"
+    "dev": "yarn workspace @web-speed-hackathon-2021/client develop",
+    "deploy": "yarn build && gcloud app deploy"
   },
   "workspaces": [
     "client",
