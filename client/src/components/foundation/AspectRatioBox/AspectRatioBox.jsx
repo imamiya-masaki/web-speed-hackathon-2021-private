@@ -16,25 +16,26 @@ const AspectRatioBox = ({ aspectHeight, aspectWidth, children }) => {
   const ref = React.useRef(null);
   const [clientHeight, setClientHeight] = React.useState(0);
 
-  React.useEffect(() => {
-    // clientWidth とアスペクト比から clientHeight を計算する
-    function calcStyle() {
-      const clientWidth = ref.current.clientWidth;
-      setClientHeight((clientWidth / aspectWidth) * aspectHeight);
-    }
-    calcStyle()
+  // React.useEffect(() => {
+  //   // clientWidth とアスペクト比から clientHeight を計算する
+  //   function calcStyle() {
+  //     const clientWidth = ref.current.clientWidth;
+  //     console.log('calcStyple', ref, clientWidth, aspectWidth, aspectHeight);
+  //     setClientHeight((clientWidth / aspectWidth) * aspectHeight);
+  //   }
+  //   calcStyle()
 
-    // ウィンドウサイズが変わるたびに計算する
-    window.addEventListener('resize', calcStyle, { passive: false });
-    return () => {
-      window.removeEventListener('resize', calcStyle);
-    };
-  }, [aspectHeight, aspectWidth]);
+  //   // ウィンドウサイズが変わるたびに計算する
+  //   window.addEventListener('resize', calcStyle, { passive: false });
+  //   return () => {
+  //     window.removeEventListener('resize', calcStyle);
+  //   };
+  // }, [aspectHeight, aspectWidth]);
 
   return (
-    <div ref={ref} className="relative w-full h-1" style={{ height: clientHeight }}>
+    <div className="relative w-full h-1" style={{ height: 'auto', paddingTop: (aspectHeight/aspectWidth)*100+'%' }}>
       {/* 高さが計算できるまで render しない */}
-      {clientHeight !== 0 ? <div className="absolute inset-0">{children}</div> : null}
+      <div className="absolute inset-0">{children}</div>
     </div>
   );
 };
