@@ -30,10 +30,12 @@ const config = {
     // minimizer: process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()]: [],
     minimizer: 
     [
-      new TerserPlugin({extractComments: 'all',terserOptions: {compress: {drop_console: true}}}),
+      new TerserPlugin({extractComments: 'all',terserOptions: {
+        compress: {drop_console: process.env.NODE_ENV === 'production'
+        }}}),
       new UglifyJsPlugin()
-    ]
-    // minimize: true
+    ],
+    minimize: process.env.NODE_ENV === 'production'
   },
   devtool: 'inline-source-map',
   entry: {
