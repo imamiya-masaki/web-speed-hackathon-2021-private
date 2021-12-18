@@ -5,7 +5,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');   
+const TerserPlugin = require('terser-webpack-plugin');
+const glob = require('glob')
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -85,6 +87,16 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
+    }),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${SRC_PATH}/**/*`,  { nodir: true }),
+      extractors: [
+        {
+          extractor: (content) =>
+            content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+          extensions: ["html", "js", "ts", "jsx"],
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       inject: false,
