@@ -4,11 +4,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './styles/webfont400.css';
-@import './styles/webfont500.css';
-@import './styles/webfont600.css';
-@import './styles/webfont700.css';
-@import './styles/webfont800.css';
+@import './styles/webfont400.css'; /*  default */
+/* @import './styles/webfont500.css'; */
+/* @import './styles/webfont600.css'; */
+@import './styles/webfont700.css'; /* font-bold */
+/* @import './styles/webfont800.css'; */
 
 
 body {
