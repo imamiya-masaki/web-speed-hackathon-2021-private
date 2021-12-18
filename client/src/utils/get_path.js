@@ -3,7 +3,7 @@
  * @returns {string}
  */
 function getImagePath(imageId) {
-  return `/images/${imageId}.webp`;
+  return `/images/${imageId}.webp`
 }
 
 /**
@@ -11,6 +11,9 @@ function getImagePath(imageId) {
  * @returns {string}
  */
 function getMoviePath(movieId) {
+  if (document.body.offsetWidth <= 401) {
+    return `/movies/${movieId}@358.gif`
+  }
   return `/movies/${movieId}.gif`;
 }
 

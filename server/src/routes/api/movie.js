@@ -31,8 +31,9 @@ router.post('/movies', async (req, res) => {
   });
 
   const filePath = path.resolve(UPLOAD_PATH, `./movies/${movieId}.${EXTENSION}`);
+  const filePath358 = path.resolve(UPLOAD_PATH, `./movies/${movieId}@358.${EXTENSION}`); // filePath@358にも登録しておく。 //resizeするかどうかは置いておく
   await fs.writeFile(filePath, converted);
-
+  await fs.writeFile(filePath358, converted);
   return res.status(200).type('application/json').send({ id: movieId });
 });
 
