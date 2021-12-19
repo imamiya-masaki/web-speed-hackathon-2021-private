@@ -5,6 +5,7 @@ import { Post } from './Post';
 import { PostsImagesRelation } from './PostsImagesRelation';
 import { ProfileImage } from './ProfileImage';
 import { Sound } from './Sound';
+import { SoundPeaks } from './SoundPeaks';
 import { User } from './User';
 
 User.hasMany(Post, {
@@ -72,4 +73,4 @@ Comment.belongsTo(User, {
   },
 });
 
-export { User, Post, Image, Movie, Sound, Comment, ProfileImage, PostsImagesRelation };
+export { User, Post, Image, Movie, Sound, Comment, ProfileImage, PostsImagesRelation, SoundPeaks };

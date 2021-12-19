@@ -30,7 +30,7 @@ const Sound = sequelize.define('Sound', {
     allowNull: false,
     defaultValue: 'Unknown',
     type: DataTypes.STRING,
-  },
+  }
 });
 
 export { Sound };
