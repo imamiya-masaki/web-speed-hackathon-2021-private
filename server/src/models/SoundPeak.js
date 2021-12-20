@@ -3,18 +3,18 @@ import { DataTypes, Sequelize } from 'sequelize';
 import { sequelize } from '../sequelize';
 
 /**
- * @typedef {object} SoundPeaksAttributes
+ * @typedef {object} SoundPeakAttributes
  * @property {string} id
  * @property {number} max
  * @property {number} peak
  */
 
 /**
- * @typedef {import('sequelize').Model<SoundPeaksAttributes>} SoundModel
+ * @typedef {import('sequelize').Model<SoundPeakAttributes>} SoundPeakModel
  */
 
-/** @type {import('sequelize').ModelCtor<SoundModel>} */
-const SoundPeaks = sequelize.define('Sound', {
+/** @type {import('sequelize').ModelCtor<SoundPeakModel>} */
+const SoundPeak = sequelize.define('SoundPeak', {
   id: {
     allowNull: false,
     defaultValue: Sequelize.UUIDV4,
@@ -32,7 +32,21 @@ const SoundPeaks = sequelize.define('Sound', {
   peak: {
     allowNull: false,
     type: DataTypes.INTEGER,
+  },
+  index: {
+    allowNull: false,
+    type: DataTypes.INTEGER
   }
+},
+{
+  defaultScope: {
+    attributes: {
+      exclude: ['soundId', 'index'],
+    },
+    order: [
+      ['index', 'DESC'],
+    ],
+  },
 });
 
-export { SoundPeaks };
+export { SoundPeak };

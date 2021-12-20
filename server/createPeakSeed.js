@@ -98,7 +98,7 @@ const sounds = [
           const get = getPeaks(buffer.getChannelData(0), buffer.getChannelData(1))
           for (let j = 0; j < get.peaksO.length; j++) {
             const peak = get.peaksO[j];
-            output.push({id: sound.id, max: get.maxO, peak: peak})
+            output.push({soundId: sound.id, max: get.maxO, peak: peak, index: j})
           }
         })
     }

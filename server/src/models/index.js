@@ -2,10 +2,12 @@ import { Comment } from './Comment';
 import { Image } from './Image';
 import { Movie } from './Movie';
 import { Post } from './Post';
+import { sequelize } from '../sequelize';
 import { PostsImagesRelation } from './PostsImagesRelation';
 import { ProfileImage } from './ProfileImage';
 import { Sound } from './Sound';
-import { SoundPeaks } from './SoundPeaks';
+import { SoundPeak } from './SoundPeak';
+// import { SoundPeaks } from './SoundPeaks';
 import { User } from './User';
 
 User.hasMany(Post, {
@@ -26,8 +28,7 @@ Post.belongsTo(User, {
 User.belongsTo(ProfileImage, {
   as: 'profileImage',
   foreignKey: {
-    allowNull: false,
-    defaultValue: '396fe4ce-aa36-4d96-b54e-6db40bae2eed',
+    allowNull: false
   },
 });
 
@@ -45,7 +46,18 @@ Post.belongsToMany(Image, {
 Post.belongsTo(Movie, {
   as: 'movie',
 });
-
+Sound.hasMany(SoundPeak, {
+  as: 'soundPeak',
+  foreignKey: {
+    allowNull: false,
+    name: 'soundId'
+  }
+}
+)
+Sound.hasOne(SoundPeak, {
+  as: 'soundPeakMax',
+  where: sequelize.fn('max', sequelize.col('peak'))
+})
 Post.belongsTo(Sound, {
   as: 'sound',
 });
@@ -56,6 +68,7 @@ Post.hasMany(Comment, {
     allowNull: false,
     name: 'postId',
   },
+  
 });
 Comment.belongsTo(Post, {
   as: 'post',
@@ -73,4 +86,4 @@ Comment.belongsTo(User, {
   },
 });
 
-export { User, Post, Image, Movie, Sound, Comment, ProfileImage, PostsImagesRelation, SoundPeaks };
+export { User, Post, Image, Movie, Sound, Comment, ProfileImage, PostsImagesRelation, SoundPeak };

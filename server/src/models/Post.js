@@ -45,11 +45,16 @@ const Post = sequelize.define(
           through: { attributes: [] },
         },
         { association: 'movie' },
-        { association: 'sound' },
+        { association: 'sound',
+          include: {
+            association: 'soundPeak',
+          }
+       },
       ],
       order: [
         ['id', 'DESC'],
         ['images', 'createdAt', 'ASC'],
+        ['sound', 'soundPeak', 'index', 'ASC']
       ],
     },
   },

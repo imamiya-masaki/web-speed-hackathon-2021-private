@@ -30,7 +30,12 @@ const Sound = sequelize.define('Sound', {
     allowNull: false,
     defaultValue: 'Unknown',
     type: DataTypes.STRING,
-  }
+  },
+},
+{
+  defaultScope: {
+    include: [{ association: 'soundPeak'}, { association: 'soundPeakMax'}],
+  },
 });
 
 export { Sound };

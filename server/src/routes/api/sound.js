@@ -8,7 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { convertSound } from '../../converters/convert_sound';
 import { UPLOAD_PATH } from '../../paths';
 import { extractMetadataFromSound } from '../../utils/extract_metadata_from_sound';
-import { SoundPeaks } from '../../models';
+import Log4js from 'log4js';
+const AudioContext = require('web-audio-api').AudioContext
+const logger = Log4js.getLogger();
+logger.level = "debug"; //これがないと表示されない
+// import { SoundPeaks } from '../../models';
 // 変換した音声の拡張子
 const EXTENSION = 'mp3';
 
@@ -23,7 +27,7 @@ router.post('/sounds', async (req, res) => {
   }
 
   const soundId = uuidv4();
-
+  logger.debug('/sound', req.body, Buffer.isBuffer(req.body));
   const { artist, title } = await extractMetadataFromSound(req.body);
 
   const converted = await convertSound(req.body, {
@@ -36,9 +40,9 @@ router.post('/sounds', async (req, res) => {
 
   return res.status(200).type('application/json').send({ artist, id: soundId, title });
 });
-router.get('/peaks/:soundId', async (req, res) => {
-  const soundId = req.params.soundId
-  const getPeaks = await SoundPeaks.findAll({where:{soundId: soundId}})
-})
+// router.get('/peaks/:soundId', async (req, res) => {
+//   const soundId = req.params.soundId
+//   const getPeaks = await SoundPeaks.findAll({where:{soundId: soundId}})
+// })
 
 export { router as soundRouter };
