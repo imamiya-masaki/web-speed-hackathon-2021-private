@@ -6,7 +6,7 @@ import postsImagesRelation from '../seeds/postsImagesRelation.json';
 import profileImages from '../seeds/profileImages.json';
 import sounds from '../seeds/sounds.json';
 import users from '../seeds/users.json';
-import soundpeaks from '../seeds/soundPeak.json';
+import soundpeak from '../seeds/soundPeak.json';
 import { Comment, Image, Movie, Post, PostsImagesRelation, ProfileImage, Sound, User, SoundPeak } from './models';
 
 async function insertSeeds() {
@@ -18,7 +18,7 @@ async function insertSeeds() {
   await Post.bulkCreate(posts, { logging: false });
   await PostsImagesRelation.bulkCreate(postsImagesRelation, { logging: false });
   await Comment.bulkCreate(comments, { logging: false });
-  await SoundPeak.bulkCreate(soundpeaks, { logging: false});
+  await SoundPeak.bulkCreate(soundpeak, { logging: false});
 }
 
 export { insertSeeds };

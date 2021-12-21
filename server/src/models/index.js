@@ -7,7 +7,6 @@ import { PostsImagesRelation } from './PostsImagesRelation';
 import { ProfileImage } from './ProfileImage';
 import { Sound } from './Sound';
 import { SoundPeak } from './SoundPeak';
-// import { SoundPeaks } from './SoundPeaks';
 import { User } from './User';
 
 User.hasMany(Post, {
@@ -28,7 +27,8 @@ Post.belongsTo(User, {
 User.belongsTo(ProfileImage, {
   as: 'profileImage',
   foreignKey: {
-    allowNull: false
+    allowNull: false,
+    defaultValue: '396fe4ce-aa36-4d96-b54e-6db40bae2eed'
   },
 });
 
@@ -52,11 +52,6 @@ Sound.hasMany(SoundPeak, {
     allowNull: false,
     name: 'soundId'
   }
-}
-)
-Sound.hasOne(SoundPeak, {
-  as: 'soundPeakMax',
-  where: sequelize.fn('max', sequelize.col('peak'))
 })
 Post.belongsTo(Sound, {
   as: 'sound',

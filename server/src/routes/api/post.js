@@ -11,7 +11,6 @@ router.get('/posts', async (req, res) => {
     limit: req.query.limit,
     offset: req.query.offset,
   });
-  // logger.debug('posts/', posts);
   return res.status(200).type('application/json').send(posts);
 });
 
@@ -41,7 +40,6 @@ router.post('/posts', async (req, res) => {
   if (req.session.userId === undefined) {
     throw new httpErrors.Unauthorized();
   }
-
   const post = await Post.create(
     {
       ...req.body,

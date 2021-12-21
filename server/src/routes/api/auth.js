@@ -2,12 +2,14 @@ import Router from 'express-promise-router';
 import httpErrors from 'http-errors';
 
 import { User } from '../../models';
+import Log4js from 'log4js';
+const logger = Log4js.getLogger();
+logger.level = "debug"; //これがないと表示されない
 
 const router = Router();
 
 router.post('/signup', async (req, res) => {
   const { id: userId } = await User.create(req.body);
-
   const user = await User.findByPk(userId);
 
   req.session.userId = user.id;

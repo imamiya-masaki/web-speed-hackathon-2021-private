@@ -27,6 +27,7 @@ const AuthModalContainer = ({ onRequestCloseModal, onUpdateActiveUser }) => {
           const user = await sendJSON('/api/v1/signin', params);
           onUpdateActiveUser(user);
         } else if (type === 'signup') {
+          console.log('signup', params);
           const user = await sendJSON('/api/v1/signup', params);
           onUpdateActiveUser(user);
         }

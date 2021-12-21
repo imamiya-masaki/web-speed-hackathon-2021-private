@@ -82,6 +82,7 @@ const sounds = [
   ];
   const main = async () => {
     const output = [];
+    const outputSound = [];
     for (let i = 0; i < sounds.length; i++) {
       const sound = sounds[i];
       const outputObj = {};
@@ -96,13 +97,20 @@ const sounds = [
           audioCtx.decodeAudioData(soundData.slice(0), resolve, reject);
         }).then(buffer => {
           const get = getPeaks(buffer.getChannelData(0), buffer.getChannelData(1))
+          const max = get.maxO; 
+          const peaks = [];
           for (let j = 0; j < get.peaksO.length; j++) {
             const peak = get.peaksO[j];
-            output.push({soundId: sound.id, max: get.maxO, peak: peak, index: j})
+            peaks.push(peak)
+            output.push({soundId: sound.id, ratio: peak/max, index: j})
           }
+          outputSound.push(sound)
         })
     }
     fs.writeFileSync('soundPeak.json', JSON.stringify(output, null, 2), function (err) {
+      console.log('err', err);
+    })
+    fs.writeFileSync('sounds.json', JSON.stringify(outputSound, null, 2), function (err) {
       console.log('err', err);
     })
   }

@@ -49,7 +49,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
         data: [...cur.data, ...allData],
         isLoading: false,
       }));
-      // console.log('result', result, allData, LIMIT, offset);
+      // console.log('result', result, allData, LIMIT, offset, apiPath);
       internalRef.current = {
         isLoading: false,
         offset: offset + LIMIT,

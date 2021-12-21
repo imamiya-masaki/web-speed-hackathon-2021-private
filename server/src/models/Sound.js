@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize } from 'sequelize';
+import { SoundPeak } from './SoundPeak';
 
 import { sequelize } from '../sequelize';
 
@@ -30,11 +31,11 @@ const Sound = sequelize.define('Sound', {
     allowNull: false,
     defaultValue: 'Unknown',
     type: DataTypes.STRING,
-  },
+  }
 },
 {
   defaultScope: {
-    include: [{ association: 'soundPeak'}, { association: 'soundPeakMax'}],
+    include: [{ association: 'soundPeak'}],
   },
 });
 
