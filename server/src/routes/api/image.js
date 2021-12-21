@@ -38,8 +38,9 @@ router.post('/images', async (req, res) => {
   });
 
   const filePath = path.resolve(UPLOAD_PATH, `./images/${imageId}.${EXTENSION}`);
+  const filePath178x318 = path.resolve(UPLOAD_PATH, `./images/${imageId}@178x318.${EXTENSION}`);
   await fs.writeFile(filePath, converted);
-
+  await fs.writeFile(filePath178x318, converted);
   return res.status(200).type('application/json').send({ id: imageId });
 });
 

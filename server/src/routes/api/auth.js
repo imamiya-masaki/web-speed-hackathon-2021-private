@@ -3,8 +3,8 @@ import httpErrors from 'http-errors';
 
 import { User } from '../../models';
 import Log4js from 'log4js';
-const logger = Log4js.getLogger();
-logger.level = "debug"; //これがないと表示されない
+// const logger = Log4js.getLogger();
+// logger.level = "debug"; //これがないと表示されない
 
 const router = Router();
 
