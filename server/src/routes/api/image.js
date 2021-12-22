@@ -36,11 +36,17 @@ router.post('/images', async (req, res) => {
     // 画像の横サイズを指定する (undefined は元画像に合わせる)
     width: undefined,
   });
-
-  const filePath = path.resolve(UPLOAD_PATH, `./images/${imageId}.${EXTENSION}`);
-  const filePath178x318 = path.resolve(UPLOAD_PATH, `./images/${imageId}@178x318.${EXTENSION}`);
-  await fs.writeFile(filePath, converted);
-  await fs.writeFile(filePath178x318, converted);
+  // if (document.body.offsetWidth <= 361) {
+  //   return `/images/${imageId}@178x318.webp`
+  // }
+  const imageFiles = ['widthImage', 'heightImage', 'widthMiniImage']
+  const mobiles = ['', '@mobile']
+  for (const imageFile of imageFiles) {
+    for (const mobile of mobiles) {
+      const filePath = path.resolve(UPLOAD_PATH, `./images/${imageFile}/${imageId}${mobile}.${EXTENSION}`);
+      await fs.writeFile(filePath, converted);
+    }
+  }
   return res.status(200).type('application/json').send({ id: imageId });
 });
 

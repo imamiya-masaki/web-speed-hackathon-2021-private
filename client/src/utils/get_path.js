@@ -2,12 +2,16 @@
  * @param {string} imageId
  * @returns {string}
  */
-function getImagePath(imageId) {
-  if (document.body.offsetWidth <= 361) {
-    return `/images/${imageId}@178x318.webp`
-    return 
-  }
-  return `/images/${imageId}.webp`
+function getImagePath(imageId, type=0) {
+  // type = 0 最大横
+  // type = 1 縦
+  // type = mini横
+  const mobile = document.body.offsetWidth <= 361 ? '@mobile' : ''
+  const imageFile = type === 0 ? 'widthImage' :  type === 1 ? 'heightImage' : 'widthMiniImage'
+  // if (document.body.offsetWidth <= 361) {
+  //   return `/images/${imageId}@178x318.webp`
+  // }
+  return `/images/${imageFile}/${imageId}${mobile}.webp`
 }
 
 /**
