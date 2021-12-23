@@ -1,5 +1,5 @@
 import React from 'react';
-
+import svgInfo from './svgInfo.json';
 /**
  * @typedef {object} Props
  * @property {string} iconType
@@ -9,8 +9,8 @@ import React from 'react';
 /** @type {React.VFC<Props>} */
 const FontAwesomeIcon = ({ iconType, styleType }) => {
   return (
-    <svg className="font-awesome inline-block leading-none fill-current">
-      <use xlinkHref={`/sprites/font-awesome/${styleType}.svg#${iconType}`} />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox={svgInfo[iconType].viewBox} className="font-awesome inline-block leading-none fill-current">
+      <path d={svgInfo[iconType][styleType]} />
     </svg>
   );
 };
