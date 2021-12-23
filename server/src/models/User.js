@@ -60,10 +60,6 @@ const User = sequelize.define(
       validate: {
         is: /^[a-z0-9_-]+$/i,
       },
-    },
-    rgb: {
-      allowNull: false,
-      type: DataTypes.STRING
     }
   },
   {

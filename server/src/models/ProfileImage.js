@@ -25,6 +25,10 @@ const ProfileImage = sequelize.define('ProfileImage', {
     primaryKey: true,
     type: DataTypes.UUID,
   },
+  rgb: {
+    allowNull: false,
+    type: DataTypes.STRING
+  }
 });
 
 export { ProfileImage };
