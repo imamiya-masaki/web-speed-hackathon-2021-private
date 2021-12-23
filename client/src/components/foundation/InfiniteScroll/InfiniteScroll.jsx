@@ -29,23 +29,18 @@ const InfiniteScroll = ({ children, fetchMore, items }) => {
             cnt++
           }
         }
-      }, 100);
+      }, 500);
     }
     // 最初は実行されないので手動で呼び出す
     prevReachedRef.current = false;
     handler2();
-
-    document.addEventListener('wheel', handler2, { passive: true, capture: true });
-    document.addEventListener('touchmove', handler2, { passive: true, capture: true });
-    document.addEventListener('resize', handler2, { passive: true, capture: true });
-    document.addEventListener('scroll', handler2, { passive: true, capture: true });
-    return () => {
-      document.removeEventListener('wheel', handler2);
-      document.removeEventListener('touchmove', handler2);
-      document.removeEventListener('resize', handler2);
-      document.removeEventListener('scroll', handler2);
-    };
-  }, [latestItem, fetchMore]);
+    if (cnt === 0) {
+      document.addEventListener('wheel', handler2, { passive: true, capture: true });
+      document.addEventListener('touchmove', handler2, { passive: true, capture: true });
+      document.addEventListener('resize', handler2, { passive: true, capture: true });
+      document.addEventListener('scroll', handler2, { passive: true, capture: true });
+    }
+  }, [latestItem, fetchMore, cnt, running]);
 
   return <>{children}</>;
 };
