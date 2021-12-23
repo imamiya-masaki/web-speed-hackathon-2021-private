@@ -30,7 +30,6 @@ const AppContainer = () => {
   const handleRequestOpenAuthModal = React.useCallback(() => setModalType('auth'), []);
   const handleRequestOpenPostModal = React.useCallback(() => setModalType('post'), []);
   const handleRequestCloseModal = React.useCallback(() => setModalType('none'), []);
-
   if (isLoading) {
     return (
       <Helmet>

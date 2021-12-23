@@ -61,6 +61,10 @@ const User = sequelize.define(
         is: /^[a-z0-9_-]+$/i,
       },
     },
+    rgb: {
+      allowNull: false,
+      type: DataTypes.STRING
+    }
   },
   {
     defaultScope: {
