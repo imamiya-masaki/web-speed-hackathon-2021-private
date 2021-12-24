@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useFetch } from '../../../hooks/use_fetch';
-import { fetchBinary } from '../../../utils/fetchers';
 import { getSoundPath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
@@ -16,11 +14,6 @@ import { SoundWaveSVG } from '../SoundWaveSVG';
  * @type {React.VFC<Props>}
  */
 const SoundPlayer = ({ sound }) => {
-  const { data, isLoading } = useFetch(getSoundPath(sound.id), fetchBinary);
-  // const data = null;
-  const blobUrl = React.useMemo(() => {
-    return data !== null ? URL.createObjectURL(new Blob([data])) : null;
-  }, [data]);
 
   const [currentTimeRatio, setCurrentTimeRatio] = React.useState(0);
   /** @type {React.ReactEventHandler<HTMLAudioElement>} */
@@ -32,7 +25,7 @@ const SoundPlayer = ({ sound }) => {
   /** @type {React.RefObject<HTMLAudioElement>} */
   const audioRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const handleTogglePlaying = React.useCallback(() => {
+  const handleTogglePlaying = () => {
     setIsPlaying((isPlaying) => {
       if (isPlaying) {
         audioRef.current?.pause();
@@ -41,15 +34,11 @@ const SoundPlayer = ({ sound }) => {
       }
       return !isPlaying;
     });
-  }, []);
-
-  // if (isLoading || data === null || blobUrl === null) {
-  //   // return null;
-  // }
+  };
 
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-300">
-      <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={blobUrl} async/>
+      <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={getSoundPath(sound.id)} async/>
       <div className="p-2">
         <button
           className="flex items-center justify-center w-8 h-8 text-white text-sm bg-blue-600 rounded-full hover:opacity-75"
