@@ -5,14 +5,13 @@ import { gzip } from 'pako';
  * @returns {Promise<ArrayBuffer>}
  */
 async function fetchBinary(url) {
-  const result = await $.ajax({
-    async: false,
-    dataType: 'binary',
+  const res = await fetch(url, {
     method: 'GET',
-    responseType: 'arraybuffer',
-    url,
+    cache: 'no-cache',
+        mode: 'cors',
+    credentials: 'same-origin',
   });
-  return result;
+  return res.arrayBuffer();
 }
 
 /**
@@ -21,17 +20,16 @@ async function fetchBinary(url) {
  * @returns {Promise<T>}
  */
 async function fetchJSON(url, data) {
-  const to = {
-    async: false,
-    dataType: 'json',
+  const res = await fetch(url + '?' + Object.entries(data || {}).map(ent => `${ent[0]}=${ent[1]}`).join('&'), {
     method: 'GET',
-    url,
-  }
-  if (data) {
-    to.data = data;
-  }
-  const result = await $.ajax(to)
-  return result;
+    cache: 'no-cache',
+    mode: 'cors',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  return res && res.ok ? res.json() : null;
 }
 
 /**
@@ -41,18 +39,14 @@ async function fetchJSON(url, data) {
  * @returns {Promise<T>}
  */
 async function sendFile(url, file) {
-  const result = await $.ajax({
-    async: false,
-    data: file,
-    dataType: 'json',
+  const res = await fetch(url, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/octet-stream',
     },
-    method: 'POST',
-    processData: false,
-    url,
-  });
-  return result;
+    body: file
+  })
+  return res.json();
 }
 
 /**
@@ -65,20 +59,17 @@ async function sendJSON(url, data) {
   const jsonString = JSON.stringify(data);
   const uint8Array = new TextEncoder().encode(jsonString);
   const compressed = gzip(uint8Array);
-
-  const result = await $.ajax({
-    async: false,
-    data: compressed,
-    dataType: 'json',
+  const res = await fetch(url, {
+    method: 'POST',
     headers: {
-      'Content-Encoding': 'gzip',
       'Content-Type': 'application/json',
     },
-    method: 'POST',
-    processData: false,
-    url,
-  });
-  return result;
+    cache: 'no-cache',
+    mode: 'cors',
+    credentials: 'same-origin',
+    body: JSON.stringify(data)
+  })
+  return res.json();
 }
 
 export { fetchBinary, fetchJSON, sendFile, sendJSON };
