@@ -11,7 +11,7 @@ function getImagePath(imageId, type=0) {
   // if (document.body.offsetWidth <= 361) {
   //   return `/images/${imageId}@178x318.webp`
   // }
-  return `/images/${imageFile}/${imageId}${mobile}.webp`
+  return `/images/${imageFile}-${imageId}${mobile}.webp`
 }
 
 /**

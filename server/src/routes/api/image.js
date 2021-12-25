@@ -32,7 +32,7 @@ router.post('/images', async (req, res) => {
     // 画像の拡張子を指定する
     extension: EXTENSION,
     // 画像の縦サイズを指定する (undefined は元画像に合わせる)
-    height: 477,
+    height: undefined,
     // 画像の横サイズを指定する (undefined は元画像に合わせる)
     width: undefined,
   });
@@ -43,8 +43,9 @@ router.post('/images', async (req, res) => {
   const mobiles = ['', '@mobile']
   for (const imageFile of imageFiles) {
     for (const mobile of mobiles) {
-      const filePath = path.resolve(UPLOAD_PATH, `./images/${imageFile}/${imageId}${mobile}.${EXTENSION}`);
-      await fs.writeFile(filePath, converted);
+      const filePath = path.resolve(UPLOAD_PATH, `./images/${imageFile}-${imageId}${mobile}.${EXTENSION}`);
+      // logger.debug('upload', filePath, fs.access(path.resolve(UPLOAD_PATH, `./images/${imageFile}`)));
+      await fs.writeFile(filePath, converted).catch(err => logger.debug('err', err));
     }
   }
   return res.status(200).type('application/json').send({ id: imageId });

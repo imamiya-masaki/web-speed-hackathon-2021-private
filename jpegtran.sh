@@ -15,7 +15,7 @@ sudo chmod 777 $OUTDIR/widthMiniImage
 for file in $FILES; do
 	TARGET=`basename "$file" .jpg`
 	# widthImage
-	dist="$OUTDIR"/widthImage/"$TARGET"
+	dist="$OUTDIR"/widthImage-"$TARGET"
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
@@ -34,7 +34,7 @@ for file in $FILES; do
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
 	cwebp "$dist".jpg -o "$dist".webp
 	rm "$dist".jpg
-	dist="$OUTDIR"/widthImage/"$TARGET"@mobile
+	dist="$OUTDIR"/widthImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
@@ -55,7 +55,7 @@ for file in $FILES; do
 	rm "$dist".jpg
 	# heightImage
 	# heightだとleft > rightだとうまくいかないことがある...
-	dist="$OUTDIR"/heightImage/"$TARGET"
+	dist="$OUTDIR"/heightImage-"$TARGET"
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
@@ -74,7 +74,7 @@ for file in $FILES; do
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
 	cwebp "$dist".jpg -o "$dist".webp
 	rm "$dist".jpg
-	dist="$OUTDIR"/heightImage/"$TARGET"@mobile
+	dist="$OUTDIR"/heightImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
@@ -94,7 +94,7 @@ for file in $FILES; do
 	cwebp "$dist".jpg -o "$dist".webp
 	rm "$dist".jpg
 	# widthMiniImage
-	dist="$OUTDIR"/widthMiniImage/"$TARGET"
+	dist="$OUTDIR"/widthMiniImage-"$TARGET"
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
@@ -113,7 +113,7 @@ for file in $FILES; do
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
 	cwebp "$dist".jpg -o "$dist".webp
 	rm "$dist".jpg
-	dist="$OUTDIR"/widthMiniImage/"$TARGET"@mobile
+	dist="$OUTDIR"/widthMiniImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
 	height=`identify -format "%h" "$dist".jpg`
 	width=`identify -format "%w" "$dist".jpg`
