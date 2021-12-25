@@ -25,7 +25,7 @@ const Navigation = ({ activeUser, onRequestOpenAuthModal, onRequestOpenPostModal
         ) : null}
         {activeUser !== null ? (
           <NavigationItem
-            href={`/users/${activeUser.username}`}
+            href={`/users/${activeUser ? activeUser.username : ''}`}
             icon={<FontAwesomeIcon iconType="user" styleType="solid" />}
             text="マイページ"
           />

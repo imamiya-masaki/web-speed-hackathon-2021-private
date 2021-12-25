@@ -15,7 +15,7 @@ import { SoundArea } from '../../post/SoundArea';
 /** @type {React.VFC<Props>} */
 const PostItem = ({ post }) => {
   return (
-    <article className="px-1 sm:px-4">
+    <article className="px-1 sm:px-4" id="postdetail">
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
         <div className="flex items-center justify-center">
           <div className="flex-grow-0 flex-shrink-0 pr-2">

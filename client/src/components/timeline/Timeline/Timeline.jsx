@@ -8,13 +8,13 @@ import { TimelineItem } from '../TimelineItem';
  */
 
 /** @type {React.VFC<Props>} */
-const Timeline = ({ timeline }) => {
+const Timeline = ({ timeline, type }) => {
   /* 
   ここ見えている範囲のレンダリングをして、それ以外は、アイドル時間中にすうようにしたい
   バーチャルレンダリング
   */
   return (
-    <section>
+    <section id={type}>
       {timeline.map((post) => {
         return <TimelineItem key={post.id} post={post} />;
       })}

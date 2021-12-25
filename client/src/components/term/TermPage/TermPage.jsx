@@ -3,7 +3,7 @@ import React from 'react';
 /** @type {React.VFC} */
 const TermPage = () => {
   return (
-    <article className="pb-16 px-2 leading-relaxed md:pt-2 md:px-4">
+    <article className="term pb-16 px-2 leading-relaxed md:pt-2 md:px-4">
       <h1 className="mb-2 mt-4 text-3xl font-bold">利用規約</h1>
 
       <p>

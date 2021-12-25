@@ -1,0 +1,11 @@
+チェックリストにないので、
+狙い撃ちcssしよう
+
+music:postId
+01EX11PRNCYPSCBZQZQV9ZDQKE
+image:postId
+01EXNV3BSJV18WFYBS87TP4NFC
+movie:postId
+01EXH20KRBVP34RYHYDTSX8JS2
+
+でもこれ繰り返しになっているからこれ満たしていたら、すべてのフォントで満たすな

@@ -10,7 +10,7 @@ import { CommentItem } from '../CommentItem';
 /** @type {React.VFC<Props>} */
 const CommentList = ({ comments }) => {
   return (
-    <div>
+    <div id="postdetail">
       {comments.map((comment) => {
         return <CommentItem key={comment.id} comment={comment} />;
       })}

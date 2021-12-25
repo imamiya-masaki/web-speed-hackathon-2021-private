@@ -1,0 +1,12 @@
+@font-face {
+    font-display: swap;
+    font-family: 'timeline-font';
+    font-weight: 400;
+    src: url(/fonts/timeline-font-normal.woff2) format('woff2');
+  }
+@font-face {
+    font-display: swap;
+    font-family: 'timeline-font';
+    font-weight: 700;
+    src: url(/fonts/timeline-font-bold.woff2) format('woff2');
+}

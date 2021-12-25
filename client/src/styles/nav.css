@@ -1,0 +1,12 @@
+@font-face {
+    font-display: swap;
+    font-family: 'nav-font';
+    font-weight: 400;
+    src: url(/fonts/nav-font-normal.woff2) format('woff2');
+  }
+@font-face {
+    font-display: swap;
+    font-family: 'nav-font';
+    font-weight: 700;
+    src: url(/fonts/nav-font-800.woff2) format('woff2');
+}

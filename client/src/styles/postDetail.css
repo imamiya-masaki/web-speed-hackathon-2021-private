@@ -1,0 +1,12 @@
+@font-face {
+    font-display: swap;
+    font-family: 'postdetail-font';
+    font-weight: 400;
+    src: url(/fonts/postdetail-font-normal.woff2) format('woff2');
+  }
+@font-face {
+    font-display: swap;
+    font-family: 'postdetail-font';
+    font-weight: 700;
+    src: url(/fonts/postdetail-font-bold.woff2) format('woff2');
+}
