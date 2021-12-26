@@ -2,8 +2,8 @@ import Router from 'express-promise-router';
 import httpErrors from 'http-errors';
 import Log4js from 'log4js';
 import { Comment, Post } from '../../models';
-// const logger = Log4js.getLogger();
-// logger.level = "debug"; //これがないと表示されない
+const logger = Log4js.getLogger();
+logger.level = "debug"; //これがないと表示されない
 const router = Router();
 
 router.get('/posts', async (req, res) => {
@@ -37,6 +37,7 @@ router.get('/posts/:postId/comments', async (req, res) => {
 });
 
 router.post('/posts', async (req, res) => {
+  logger.debug('req', req.session.userId);
   if (req.session.userId === undefined) {
     throw new httpErrors.Unauthorized();
   }

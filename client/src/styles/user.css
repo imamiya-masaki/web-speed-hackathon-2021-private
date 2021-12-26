@@ -2,11 +2,11 @@
     font-display: swap;
     font-family: 'user-font';
     font-weight: 400;
-    src: url(/fonts/user-sakurai-normal.woff2) format('woff2');
+    src: url(/fonts/user-font-normal.woff2) format('woff2');
   }
 @font-face {
     font-display: swap;
     font-family: 'user-font';
     font-weight: 700;
-    src: url(/fonts/user-sakurai-bold.woff2) format('woff2');
+    src: url(/fonts/user-font-bold.woff2) format('woff2');
 }

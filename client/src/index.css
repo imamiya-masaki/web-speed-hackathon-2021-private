@@ -9,17 +9,20 @@
 @import './styles/webfont600.css';
 @import './styles/webfont700.css';
 @import './styles/webfont800.css'; */
-
-@import './styles/term.css';
+/* 
 @import './styles/nav.css';
 @import './styles/timeline.css';
 @import './styles/user.css';
-@import './styles/postDetail.css';
-
+@import './styles/postDetail.css'; */
+@import './styles//allinone.css';
+@import './styles/term.css';
 .term {
   font-family: 'term-font', sans-serif;
 }
-nav {
+body {
+  font-family: 'allinone-font', sans-serif;
+}
+/* nav {
   font-family: 'nav-font', sans-serif;
 }
 #main-timeline {
@@ -30,7 +33,7 @@ nav {
 }
 #postdetail {
   font-family: 'postdetail-font', sans-serif;
-}
+} */
 
 .font-awesome {
   height: 1em;
