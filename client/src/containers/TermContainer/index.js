@@ -1,1 +1,0 @@
-export { TermContainer } from './TermContainer';

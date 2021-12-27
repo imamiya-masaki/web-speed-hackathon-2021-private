@@ -1,1 +1,0 @@
-export { UserProfileContainer } from './UserProfileContainer';

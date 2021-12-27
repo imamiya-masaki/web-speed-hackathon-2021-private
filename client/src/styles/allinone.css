@@ -11,6 +11,8 @@
     src: url(/fonts/allinone-font-bold.woff2) format('woff2');
 }
 
+
+/* アルファベットのためにこれを置いてるが、これを使う上でもこれからアルファベットだけ抜き取った方が軽量化になりそう*/
 @font-face {
     font-display: swap;
     font-family: 'allinone-font';

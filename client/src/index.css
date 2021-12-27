@@ -3,37 +3,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-/* @import './styles/webfont400.css';
-@import './styles/webfont500.css';
-@import './styles/webfont600.css';
-@import './styles/webfont700.css';
-@import './styles/webfont800.css'; */
-/* 
-@import './styles/nav.css';
-@import './styles/timeline.css';
-@import './styles/user.css';
-@import './styles/postDetail.css'; */
-@import './styles//allinone.css';
+@import './styles/allinone.css';
 @import './styles/term.css';
 .term {
   font-family: 'term-font', sans-serif;
 }
+/* こいつtermの時に読み込みたくないな*/
 body {
   font-family: 'allinone-font', sans-serif;
 }
-/* nav {
-  font-family: 'nav-font', sans-serif;
-}
-#main-timeline {
-  font-family: 'timeline-font', sans-serif;
-}
-#user-timeline {
-  font-family: 'user-font', sans-serif;
-}
-#postdetail {
-  font-family: 'postdetail-font', sans-serif;
-} */
 
 .font-awesome {
   height: 1em;
