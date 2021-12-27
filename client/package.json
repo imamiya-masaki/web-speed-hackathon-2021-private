@@ -10,7 +10,6 @@
     "develop": "cross-env NODE_ENV=development webpack  serve"
   },
   "dependencies": {
-    "buffer": "6.0.3",
     "classnames": "2.3.1",
     "gifler": "github:themadcreator/gifler#v0.3.0",
     "normalize.css": "8.0.1",
