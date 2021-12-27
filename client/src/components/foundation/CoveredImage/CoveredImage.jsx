@@ -21,6 +21,7 @@ const CoveredImage = ({ alt, src, height, width }) => {
         alt={alt}
         className={'absolute left-1/2 top-1/2 max-w-none transform -translate-x-1/2 -translate-y-1/2 w-full h-full'}
         src={src}
+        loading='lazy'
       />
     </div>
   );

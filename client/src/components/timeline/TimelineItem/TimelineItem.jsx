@@ -55,7 +55,7 @@ const TimelineItem = ({ post }) => {
             className="block w-12 h-12 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-16 sm:h-16"
             to={`/users/${post.user.username}`}
           >
-            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} width="64" height="64" async/>
+            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} width="64" height="64" async loading='lazy'/>
           </Link>
         </div>
         <div className="flex-grow flex-shrink min-w-0">
