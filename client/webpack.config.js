@@ -38,7 +38,7 @@ const config = {
     ],
     minimize: process.env.NODE_ENV === 'production'
   },
-  devtool: 'inline-source-map',
+  devtool: NODE_ENV === 'production' ? false : 'inline-source-map',,
   entry: {
     main: [
       'regenerator-runtime/runtime',
