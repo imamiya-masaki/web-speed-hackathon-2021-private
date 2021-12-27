@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -105,9 +104,6 @@ const config = {
         level: 9
       }
     }),
-    new MomentLocalesPlugin({
-      localesToKeep: ['ja'],
-  }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

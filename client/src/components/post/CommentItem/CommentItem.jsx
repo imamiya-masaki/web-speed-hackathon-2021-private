@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -33,8 +32,8 @@ const CommentItem = ({ comment }) => {
           </p>
           <p className="text-gray-800 text-sm leading-relaxed">{comment.text}</p>
           <p className="text-gray-500 text-xs">
-            <time dateTime={moment(comment.createdAt).toISOString()}>
-              {moment(comment.createdAt).locale('ja').format('LL')}
+            <time dateTime={comment.createdAt}>
+              {comment.createdAt.slice(0,10).split('-').reduce((pre, curr) =>  pre.length < 5 ? pre+'年'+Number(curr) : pre+'月'+Number(curr))+'日'}
             </time>
           </p>
         </div>

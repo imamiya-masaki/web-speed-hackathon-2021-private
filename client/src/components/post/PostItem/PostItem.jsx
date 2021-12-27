@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -58,8 +57,8 @@ const PostItem = ({ post }) => {
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
-              <time dateTime={moment(post.createdAt).toISOString()}>
-                {moment(post.createdAt).locale('ja').format('LL')}
+              <time dateTime={post.createdAt}>
+                {post.createdAt.slice(0,10).split('-').reduce((pre, curr) =>  pre.length < 5 ? pre+'年'+Number(curr) : pre+'月'+Number(curr))+'日'}
               </time>
             </Link>
           </p>
