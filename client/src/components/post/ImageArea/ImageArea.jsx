@@ -36,7 +36,7 @@ const ImageArea = ({ images }) => {
                 'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
               })}
             >
-              <CoveredImage alt={image.alt} src={getImagePath(image.id, type)} width={width} height={height}/>
+              <CoveredImage alt={image.alt} src={getImagePath(image.id, type)} width={width} height={height} lazy={width!==494 || height !== 277}/>
             </div>
           );
         })}
