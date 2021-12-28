@@ -32,7 +32,8 @@ for file in $FILES; do
 	# fi
 	sips -c 322 574 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	dist="$OUTDIR"/widthImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
@@ -51,7 +52,8 @@ for file in $FILES; do
 	# fi
 	sips -c 170 303 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	# heightImage
 	# heightだとleft > rightだとうまくいかないことがある...
@@ -72,7 +74,8 @@ for file in $FILES; do
 	# fi
 	sips -c 322 285 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	dist="$OUTDIR"/heightImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
@@ -91,7 +94,8 @@ for file in $FILES; do
 	# fi
 	sips -c 178 157 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	# widthMiniImage
 	dist="$OUTDIR"/widthMiniImage-"$TARGET"
@@ -111,7 +115,8 @@ for file in $FILES; do
 	# fi
 	sips -c 159 285 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	dist="$OUTDIR"/widthMiniImage-"$TARGET"@mobile
 	cp "$file" "$dist".jpg
@@ -130,7 +135,8 @@ for file in $FILES; do
 	# fi
 	sips -c 87 157 "$dist".jpg
 	jpegtran -copy none -optimize -progressive -outfile "$dist".jpg "$dist".jpg
-	cwebp "$dist".jpg -o "$dist".webp
+	# cwebp "$dist".jpg -o "$dist".webp
+	npx avif --input="$dist.jpg" --output="$OUTDIR/" --overwrite --speed=0 --quality=30
 	rm "$dist".jpg
 	#rm "$file"
 	# jpegtran -arithmetic -progressive -arithmetic -copy all "$file" > "$OUTFILE"

@@ -6,7 +6,7 @@ const main = async() => {
     const tar = target;
     for (const key in tar) {
         const url = tar[key].id;
-        const targetURL = `../public/images/profiles/${url}.webp`
+        const targetURL = `../public/images/profiles/${url}.avif`
         const { rgb } = await getAverageColor(targetURL, { mode: 'precision' });
         tar[key].rgb = rgb;
     }

@@ -8,10 +8,7 @@ function getImagePath(imageId, type=0) {
   // type = mini横
   const mobile = document.body.offsetWidth <= 361 ? '@mobile' : ''
   const imageFile = type === 0 ? 'widthImage' :  type === 1 ? 'heightImage' : 'widthMiniImage'
-  // if (document.body.offsetWidth <= 361) {
-  //   return `/images/${imageId}@178x318.webp`
-  // }
-  return `/images/${imageFile}-${imageId}${mobile}.webp`
+  return `/images/${imageFile}-${imageId}${mobile}.avif`
 }
 
 /**
@@ -37,8 +34,8 @@ function getSoundPath(soundId) {
  * @param {string} profileImageId
  * @returns {string}
  */
-function getProfileImagePath(profileImageId) {
-  return `/images/profiles/${profileImageId}.webp`;
+function getProfileImagePath(profileImageId, mini=true) {
+  return `/images/profiles/${mini ? 'mini' : 'normal'}-${profileImageId}${document.body.offsetWidth <= 361 ? '@mobile': ''}.avif`;
 }
 
 export { getImagePath, getMoviePath, getSoundPath, getProfileImagePath };
