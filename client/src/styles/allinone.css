@@ -17,12 +17,12 @@
     font-display: swap;
     font-family: 'allinone-font';
     font-weight: 400;
-    src: url(/fonts/GenEi-M-Gothic-v2-Regular.woff2) format('woff2');
+    src: url(/fonts/genei-m-gothic/normal/000.woff2) format('woff2');
   }
 
   @font-face {
     font-display: swap;
     font-family: 'allinone-font';
     font-weight: 700;
-    src: url(/fonts/GenEi-M-Gothic-v2-Heavy.woff2) format('woff2');
+    src: url(/fonts/genei-m-gothic/bold/000.woff2) format('woff2');
   }
