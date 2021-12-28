@@ -84,40 +84,40 @@ const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError,
             {params.type === 'signin' ? '初めての方はこちら' : 'サインインはこちら'}
           </button>
         </p>
-        <div className="mt-8">
+        <span className="mt-8">
           <AuthInput label="ユーザー名" onChange={handleChangeUsername} type="text" />
-        </div>
+        </span>
         {params.type === 'signup' ? (
-          <div className="mt-4">
+          <span className="mt-4">
             <AuthInput label="名前" onChange={handleChangeName} type="text" />
-          </div>
+          </span>
         ) : null}
-        <div className="mt-4">
+        <span className="mt-4">
           <AuthInput
             autoComplete={params.type === 'signup' ? 'new-password' : 'current-password'}
             label="パスワード"
             onChange={handleChangePassword}
             type="password"
           />
-        </div>
+        </span>
         {params.type === 'signup' ? (
-          <p className="mt-4">
+          <span className="mt-4">
             <Link className="text-green-600 underline" onClick={onRequestCloseModal} to="/terms">
               利用規約
             </Link>
             に同意して
-          </p>
+          </span>
         ) : null}
-        <p className="mt-4">
+        <span className="mt-4">
           <ModalSubmitButton disabled={isLoading || !isFilled} loading={isLoading}>
             {params.type === 'signin' ? 'サインイン' : '登録する'}
           </ModalSubmitButton>
-        </p>
-        <p className="mt-4">
+        </span>
+        <span className="mt-4">
           <ModalErrorMessage>
             {hasError ? (params.type === 'signin' ? 'パスワードが異なります' : 'ユーザー名が使われています') : null}
           </ModalErrorMessage>
-        </p>
+        </span>
       </form>
     </section>
   );

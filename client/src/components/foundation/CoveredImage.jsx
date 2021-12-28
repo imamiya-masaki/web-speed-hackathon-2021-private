@@ -11,7 +11,7 @@ import React from 'react';
  * アスペクト比を維持したまま、要素のコンテンツボックス全体を埋めるように画像を拡大縮小します
  * @type {React.VFC<Props>}
  */
-const CoveredImage = ({ alt, src, height, width }) => {
+export default ({ alt, src }) => {
   // if (isLoading || data === null || blobUrl === null) {
   //   return null;
   // }
@@ -27,4 +27,4 @@ const CoveredImage = ({ alt, src, height, width }) => {
   );
 };
 
-export { CoveredImage };
+

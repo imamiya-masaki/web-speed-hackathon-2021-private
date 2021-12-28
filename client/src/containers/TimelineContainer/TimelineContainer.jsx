@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
+import InfiniteScroll from '../../components/foundation/InfiniteScroll';
 import { useInfiniteFetch } from '../../hooks/use_infinite_fetch';
 import { fetchJSON } from '../../utils/fetchers';
 import { Timeline  } from '../../components/timeline/Timeline';

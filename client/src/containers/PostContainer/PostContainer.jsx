@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
-import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
+import  InfiniteScroll  from '../../components/foundation/InfiniteScroll';
 import { PostPage } from '../../components/post/PostPage';
 import { useFetch } from '../../hooks/use_fetch';
 import { useInfiniteFetch } from '../../hooks/use_infinite_fetch';

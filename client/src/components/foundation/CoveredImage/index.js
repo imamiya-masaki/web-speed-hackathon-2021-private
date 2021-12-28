@@ -1,1 +1,0 @@
-export { CoveredImage } from './CoveredImage';

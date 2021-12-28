@@ -21,4 +21,4 @@ const UserProfilePage = ({ timeline, user }) => {
   );
 };
 
-export { UserProfilePage };
+export default UserProfilePage ;

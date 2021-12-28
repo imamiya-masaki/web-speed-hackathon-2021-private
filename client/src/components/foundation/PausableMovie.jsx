@@ -3,10 +3,10 @@ import { Animator, Decoder } from 'gifler';
 import { GifReader } from 'omggif';
 import React from 'react';
 
-import { useFetch } from '../../../hooks/use_fetch';
-import { fetchBinary } from '../../../utils/fetchers';
-import { AspectRatioBox } from '../AspectRatioBox';
-import { FontAwesomeIcon } from '../FontAwesomeIcon';
+import { useFetch } from '../../hooks/use_fetch';
+import { fetchBinary } from '../../utils/fetchers';
+import { AspectRatioBox } from './AspectRatioBox';
+import { FontAwesomeIcon } from './FontAwesomeIcon';
 
 /**
  * @typedef {object} Props
@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '../FontAwesomeIcon';
  * クリックすると再生・一時停止を切り替えます。
  * @type {React.VFC<Props>}
  */
-const PausableMovie = ({ src }) => {
+ export default ({ src }) => {
   const { data, isLoading } = useFetch(src, fetchBinary);
 
   /** @type {React.RefObject<import('gifler').Animator>} */
@@ -87,5 +87,3 @@ const PausableMovie = ({ src }) => {
     </AspectRatioBox>
   );
 };
-
-export { PausableMovie };

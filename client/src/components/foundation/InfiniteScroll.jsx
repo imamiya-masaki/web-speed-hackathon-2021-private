@@ -8,7 +8,7 @@ import React from 'react';
  */
 
 /** @type {React.VFC<Props>} */
-const InfiniteScroll = ({ children, fetchMore, items }) => {
+export default ({ children, fetchMore, items }) => {
   const latestItem = items[items.length - 1];
   let running = false;
   let cnt = 0;
@@ -44,5 +44,3 @@ const InfiniteScroll = ({ children, fetchMore, items }) => {
 
   return <>{children}</>;
 };
-
-export { InfiniteScroll };

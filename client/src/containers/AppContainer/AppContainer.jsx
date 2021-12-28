@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import { Route, Routes, } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 
 import { AppPage } from '../../components/application/AppPage';
 import { useFetch } from '../../hooks/use_fetch';
@@ -12,6 +12,7 @@ const TermContainer= React.lazy(() => import('../TermContainer/TermContainer'));
 const TimelineContainer = React.lazy(() => import('../TimelineContainer/TimelineContainer'));
 const UserProfileContainer = React.lazy(() =>  import('../UserProfileContainer/UserProfileContainer'));
 /** @type {React.VFC} */
+
 const AppContainer = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +35,7 @@ const AppContainer = () => {
         onRequestOpenAuthModal={handleRequestOpenAuthModal}
         onRequestOpenPostModal={handleRequestOpenPostModal}
       >
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<p>loading...</p>}>
           <Routes>
                 <Route exact element={<TimelineContainer />} path="/" />
                 <Route element={<UserProfileContainer />} path="/users/:username" />

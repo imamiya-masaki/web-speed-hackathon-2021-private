@@ -90,7 +90,7 @@ const config = {
     path: DIST_PATH,
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    process.env.NODE_ENV === 'production' ? '' : new BundleAnalyzerPlugin(),
     new webpack.ProvidePlugin({
       // AudioContext: ['standardized-audio-context', 'AudioContext'],
     }),

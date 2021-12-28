@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 
-import { TimelineItem } from '../TimelineItem';
+import TimelineItem from '../TimelineItem/TimelineItem';
 
 /**
  * @typedef {object} Props
