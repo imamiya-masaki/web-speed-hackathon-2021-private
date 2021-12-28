@@ -35,7 +35,7 @@ const AspectRatioBox = ({ aspectHeight, aspectWidth, children }) => {
   return (
     <div className="relative w-full h-1" style={{ height: 'auto', paddingTop: (aspectHeight/aspectWidth)*100+'%' }}>
       {/* 高さが計算できるまで render しない */}
-      <span className="absolute inset-0">{children}</span>
+      <div className="absolute inset-0">{children}</div>
     </div>
   );
 };

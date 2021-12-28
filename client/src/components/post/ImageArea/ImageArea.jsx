@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import React, {lazy, Suspense} from 'react';
+import React from 'react';
 
 import { getImagePath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../../foundation/AspectRatioBox';
-const  CoveredImage = lazy(() => import('../../foundation/CoveredImage'));
+import CoveredImage from '../../foundation/CoveredImage';
 
 /**
  * @typedef {object} Props
@@ -36,7 +36,7 @@ const ImageArea = ({ images }) => {
                 'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
               })}
             >
-              <Suspense><CoveredImage alt={image.alt} src={getImagePath(image.id, type)} width={width} height={height}/></Suspense>
+              <CoveredImage alt={image.alt} src={getImagePath(image.id, type)} width={width} height={height}/>
             </div>
           );
         })}

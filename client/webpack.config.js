@@ -90,10 +90,7 @@ const config = {
     path: DIST_PATH,
   },
   plugins: [
-    process.env.NODE_ENV === 'production' ? '' : new BundleAnalyzerPlugin(),
-    new webpack.ProvidePlugin({
-      // AudioContext: ['standardized-audio-context', 'AudioContext'],
-    }),
+    new BundleAnalyzerPlugin(),
     new webpack.EnvironmentPlugin({
       BUILD_DATE: new Date().toISOString(),
       // Heroku では SOURCE_VERSION 環境変数から commit hash を参照できます

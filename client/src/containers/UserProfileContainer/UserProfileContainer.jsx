@@ -15,13 +15,6 @@ const UserProfileContainer = () => {
 
   const { data: user, isLoading: isLoadingUser } = useFetch(`/api/v1/users/${username}`, fetchJSON);
   const { data: posts, fetchMore } = useInfiniteFetch(`/api/v1/users/${username}/posts`, fetchJSON);
-  if (isLoadingUser) {
-    return (
-      <Helmet>
-        <title>読込中 - CAwitter</title>
-      </Helmet>
-    );
-  }
 
   if (user === null) {
     return <NotFoundContainer />;

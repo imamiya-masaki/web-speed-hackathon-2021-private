@@ -17,25 +17,25 @@ const PostItem = ({ post }) => {
     <article className="px-1 sm:px-4" id="postdetail">
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
         <div className="flex items-center justify-center">
-          <span className="flex-grow-0 flex-shrink-0 pr-2">
+          <p className="flex-grow-0 flex-shrink-0 pr-2">
             <Link
               className="block w-14 h-14 bg-gray-300 border border-gray-300 rounded-full hover:opacity-95 overflow-hidden sm:w-16 sm:h-16"
               to={`/users/${post.user.username}`}
             >
               <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} async loading='lazy'/>
             </Link>
-          </span>
+          </p>
           <div className="flex-grow flex-shrink min-w-0 whitespace-nowrap overflow-hidden overflow-ellipsis">
-            <span>
+            <p>
               <Link className="text-gray-800 hover:underline font-bold" to={`/users/${post.user.username}`}>
                 {post.user.name}
               </Link>
-            </span>
-            <span>
+            </p>
+            <p>
               <Link className="text-gray-500 hover:underline" to={`/users/${post.user.username}`}>
                 @{post.user.username}
               </Link>
-            </span>
+            </p>
           </div>
         </div>
         <div className="pt-2 sm:pt-4">

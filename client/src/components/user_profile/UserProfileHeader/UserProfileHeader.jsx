@@ -19,17 +19,17 @@ const UserProfileHeader = ({ user }) => {
         <h1 className="text-2xl font-bold">{user.name}</h1>
         <p className="text-gray-600">@{user.username}</p>
         <p className="pt-2">{user.description}</p>
-        <div className="pt-2 text-gray-600 text-sm">
-          <div className="pr-1">
+        <p className="pt-2 text-gray-600 text-sm">
+          <span className="pr-1">
             <FontAwesomeIcon iconType="calendar-alt" styleType="regular" />
-          </div>
-          <div>
+          </span>
+          <span>
             <time dateTime={user.createdAt}>
               {user.createdAt.slice(0,10).split('-').reduce((pre, curr) =>  pre.length < 5 ? pre+'年'+Number(curr) : pre+'月'+Number(curr))+'日'}
             </time>
             からサービスを利用しています
-          </div>
-        </div>
+          </span>
+        </p>
       </div>
     </header>
   );

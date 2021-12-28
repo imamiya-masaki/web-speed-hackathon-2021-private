@@ -1,7 +1,7 @@
-import React,{lazy, Suspense} from 'react';
+import React from 'react';
 
 import { getMoviePath } from '../../../utils/get_path';
-const PausableMovie = lazy(() => import('../../foundation/PausableMovie'));
+import PausableMovie from'../../foundation/PausableMovie';
 
 /**
  * @typedef {object} Props
@@ -12,7 +12,7 @@ const PausableMovie = lazy(() => import('../../foundation/PausableMovie'));
 const MovieArea = ({ movie }) => {
   return (
     <div className="relative w-full h-full bg-gray-300 border border-gray-300 rounded-lg overflow-hidden">
-      <Suspense><PausableMovie src={getMoviePath(movie.id)} /></Suspense>
+      <PausableMovie src={getMoviePath(movie.id)} />
     </div>
   );
 };
