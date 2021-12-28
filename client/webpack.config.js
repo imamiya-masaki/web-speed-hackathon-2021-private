@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const glob = require('glob')
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const webpack = require('webpack');
@@ -36,7 +37,26 @@ const config = {
         }}}),
       new UglifyJsPlugin()
     ],
-    minimize: process.env.NODE_ENV === 'production'
+    minimize: process.env.NODE_ENV === 'production',
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
   },
   devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
   entry: {
@@ -66,7 +86,7 @@ const config = {
     ],
   },
   output: {
-    filename: 'scripts/[name].js',
+    filename: 'scripts/[name].[contenthash].js',
     path: DIST_PATH,
   },
   plugins: [
@@ -93,8 +113,10 @@ const config = {
         },
       ],
     }),
-    new HtmlWebpackPlugin({
-      inject: false,
+    new HtmlWebpackPlugin({ 
+      scriptLoading: 'defer', 
+      chunks: ['main', 'npm', 'runtime'],
+      publicPath: '/',
       template: path.resolve(SRC_PATH, './index.html'),
     }),
     new CompressionPlugin({
@@ -103,6 +125,7 @@ const config = {
         level: 9
       }
     }),
+    new CleanWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
