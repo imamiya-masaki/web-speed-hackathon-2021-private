@@ -1,19 +1,19 @@
-import React from 'react';
-
+import {h, Fragment} from 'preact';
+import {useEffect, useRef} from 'preact/hooks'
 /**
  * @typedef {object} Props
- * @property {React.ReactNode} children
+
  * @property {any} items
  * @property {() => void} fetchMore
  */
 
-/** @type {React.VFC<Props>} */
+
 export default ({ children, fetchMore, items }) => {
   const latestItem = items[items.length - 1];
   let running = false;
   let cnt = 0;
-  const prevReachedRef = React.useRef(false);
-  React.useEffect(() => {
+  const prevReachedRef = useRef(false);
+  useEffect(() => {
     const handler2 = () => {
       if (running && cnt != 0) {
        return
@@ -42,5 +42,5 @@ export default ({ children, fetchMore, items }) => {
     }
   }, [latestItem, fetchMore, cnt, running]);
 
-  return <>{children}</>;
+  return <Fragment>{children}</Fragment>;
 };

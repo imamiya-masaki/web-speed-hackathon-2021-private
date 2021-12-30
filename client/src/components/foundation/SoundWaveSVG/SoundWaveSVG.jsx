@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 /**
  * @param {ArrayBuffer} data
  * @returns {Promise<{ max: number, peaks: number[] }}
@@ -10,7 +10,7 @@ import React from 'react';
  */
 
 /**
- * @type {React.VFC<Props>}
+
  */
 const SoundWaveSVG = ({ ratios }) => {
   return (

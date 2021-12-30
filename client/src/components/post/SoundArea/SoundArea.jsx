@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import { SoundPlayer } from '../../foundation/SoundPlayer';
 
@@ -7,7 +7,7 @@ import { SoundPlayer } from '../../foundation/SoundPlayer';
  * @property {Models.Sound} sound
  */
 
-/** @type {React.VFC<Props>} */
+
 const SoundArea = ({ sound }) => {
   return (
     <div className="relative w-full h-full border border-gray-300 rounded-lg overflow-hidden">

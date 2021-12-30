@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import TimelineItem from '../TimelineItem/TimelineItem';
 
@@ -7,7 +7,6 @@ import TimelineItem from '../TimelineItem/TimelineItem';
  * @property {Array<Models.Post>} timeline
  */
 
-/** @type {React.VFC<Props>} */
 const Timeline = ({ timeline, type }) => {
   /* 
   ここ見えている範囲のレンダリングをして、それ以外は、アイドル時間中にすうようにしたい

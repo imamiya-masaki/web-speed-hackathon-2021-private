@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import {h} from 'preact';
 
 /**
  * @typedef {object} Props
@@ -9,7 +9,7 @@ import React from 'react';
 
 /**
  * アスペクト比を維持したまま、要素のコンテンツボックス全体を埋めるように画像を拡大縮小します
- * @type {React.VFC<Props>}
+
  */
 export default ({ alt, src, lazy }) => {
   // if (isLoading || data === null || blobUrl === null) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import { getMoviePath } from '../../../utils/get_path';
 import PausableMovie from'../../foundation/PausableMovie';
@@ -8,7 +8,7 @@ import PausableMovie from'../../foundation/PausableMovie';
  * @property {Models.Movie} movie
  */
 
-/** @type {React.VFC<Props>} */
+
 const MovieArea = ({ movie }) => {
   return (
     <div className="relative w-full h-full bg-gray-300 border border-gray-300 rounded-lg overflow-hidden">

@@ -1,4 +1,4 @@
-import React from 'react';
+import {h, Fragment} from 'preact';
 
 import { CommentList } from '../CommentList';
 import { PostItem } from '../PostItem';
@@ -9,13 +9,13 @@ import { PostItem } from '../PostItem';
  * @property {Models.Post} post
  */
 
-/** @type {React.VFC<Props>} */
+
 const PostPage = ({ comments, post }) => {
   return (
-    <>
+    <Fragment>
       <PostItem post={post} />
       <CommentList comments={comments} />
-    </>
+    </Fragment>
   );
 };
 

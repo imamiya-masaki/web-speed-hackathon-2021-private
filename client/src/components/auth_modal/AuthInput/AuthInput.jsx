@@ -1,14 +1,11 @@
-import React from 'react';
-
+import {h} from 'preact'
 /**
  * @typedef {object} Props
  * @property {string} [autoComplete]
  * @property {string} label
- * @property {React.ChangeEventHandler<HTMLInputElement>} onChange
  * @property {string} type
  */
 
-/** @type {React.VFC<Props>} */
 const AuthInput = ({ autoComplete, label, onChange, type }) => {
   return (
     <label className="block">

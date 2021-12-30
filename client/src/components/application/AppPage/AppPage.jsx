@@ -1,16 +1,13 @@
-import React from 'react';
-
+import { h } from 'preact';
 import { Navigation } from '../Navigation';
 
 /**
  * @typedef {object} Props
  * @property {Models.User | null} activeUser
- * @property {React.ReactNode} children
  * @property {() => void} onRequestOpenAuthModal
  * @property {() => void} onRequestOpenPostModal
  */
 
-/** @type {React.VFC<Props>} */
 const AppPage = ({ activeUser, children, onRequestOpenAuthModal, onRequestOpenPostModal }) => {
   return (
     <div className="relative z-0 flex justify-center bg-gray-100">

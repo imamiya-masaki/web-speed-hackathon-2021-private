@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import {h} from 'preact';
 
 import { getImagePath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../../foundation/AspectRatioBox';
@@ -10,7 +10,7 @@ import CoveredImage from '../../foundation/CoveredImage';
  * @property {Array<Models.Image>} images
  */
 
-/** @type {React.VFC<Props>} */
+
 const ImageArea = ({ images }) => {
   const width = images.length >= 2 ? 245 : 494;
 

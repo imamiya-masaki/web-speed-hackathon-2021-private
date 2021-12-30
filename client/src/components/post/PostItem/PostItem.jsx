@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import {h} from 'preact';
+import { Link } from 'preact-router/match';
 
 import { getProfileImagePath } from '../../../utils/get_path';
 import { ImageArea } from '../../post/ImageArea';
@@ -11,7 +11,7 @@ import { SoundArea } from '../../post/SoundArea';
  * @property {Models.Post} post
  */
 
-/** @type {React.VFC<Props>} */
+
 const PostItem = ({ post }) => {
   return (
     <article className="px-1 sm:px-4" id="postdetail">
@@ -20,19 +20,19 @@ const PostItem = ({ post }) => {
           <p className="flex-grow-0 flex-shrink-0 pr-2">
             <Link
               className="block w-14 h-14 bg-gray-300 border border-gray-300 rounded-full hover:opacity-95 overflow-hidden sm:w-16 sm:h-16"
-              to={`/users/${post.user.username}`}
+              href={`/users/${post.user.username}`}
             >
               <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} async loading='lazy'/>
             </Link>
           </p>
           <div className="flex-grow flex-shrink min-w-0 whitespace-nowrap overflow-hidden overflow-ellipsis">
             <p>
-              <Link className="text-gray-800 hover:underline font-bold" to={`/users/${post.user.username}`}>
+              <Link className="text-gray-800 hover:underline font-bold" href={`/users/${post.user.username}`}>
                 {post.user.name}
               </Link>
             </p>
             <p>
-              <Link className="text-gray-500 hover:underline" to={`/users/${post.user.username}`}>
+              <Link className="text-gray-500 hover:underline" href={`/users/${post.user.username}`}>
                 @{post.user.username}
               </Link>
             </p>
@@ -56,7 +56,7 @@ const PostItem = ({ post }) => {
             </div>
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
-            <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
+            <Link className="text-gray-500 hover:underline" href={`/posts/${post.id}`}>
               <time dateTime={post.createdAt}>
                 {post.createdAt.slice(0,10).split('-').reduce((pre, curr) =>  pre.length < 5 ? pre+'年'+Number(curr) : pre+'月'+Number(curr))+'日'}
               </time>

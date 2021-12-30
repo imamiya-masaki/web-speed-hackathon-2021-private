@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import { Animator, Decoder } from 'gifler';
 import { GifReader } from 'omggif';
-import React from 'react';
+import { useCallback, useRef, useState } from 'preact/hooks';
+import {h} from 'preact';
 
 import { useFetch } from '../../hooks/use_fetch';
 import { fetchBinary } from '../../utils/fetchers';
@@ -15,15 +16,15 @@ import { FontAwesomeIcon } from './FontAwesomeIcon';
 
 /**
  * クリックすると再生・一時停止を切り替えます。
- * @type {React.VFC<Props>}
+
  */
- export default ({ src }) => {
+ const PausableMovie =  ({ src }) => {
   const { data, isLoading } = useFetch(src, fetchBinary);
 
-  /** @type {React.RefObject<import('gifler').Animator>} */
-  const animatorRef = React.useRef(null);
-  /** @type {React.RefCallback<HTMLCanvasElement>} */
-  const canvasCallbackRef = React.useCallback(
+
+  const animatorRef = useRef(null);
+
+  const canvasCallbackRef = useCallback(
     (el) => {
       animatorRef.current?.stop();
 
@@ -53,8 +54,8 @@ import { FontAwesomeIcon } from './FontAwesomeIcon';
     [data],
   );
 
-  const [isPlaying, setIsPlaying] = React.useState(true);
-  const handleClick = React.useCallback(() => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const handleClick = useCallback(() => {
     setIsPlaying((isPlaying) => {
       if (isPlaying) {
         animatorRef.current?.stop();
@@ -87,3 +88,4 @@ import { FontAwesomeIcon } from './FontAwesomeIcon';
     </AspectRatioBox>
   );
 };
+export default PausableMovie 

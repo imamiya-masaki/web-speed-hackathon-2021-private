@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import React from 'react';
+import {h} from 'preact';
 
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
@@ -8,10 +7,11 @@ import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
  * @property {string | null} children
  */
 
-/** @type {React.VFC<Props>} */
+
 const ModalErrorMessage = ({ children }) => {
   return (
-    <span className={classNames('block h-6 text-red-600', { invisible: !children })}>
+    <span 
+    class={`block h-6 text-red-600 ${!children ? 'invisible': ''}`}>
       <p className="mr-1">
         <FontAwesomeIcon iconType="exclamation-circle" styleType="solid" />
       </p>

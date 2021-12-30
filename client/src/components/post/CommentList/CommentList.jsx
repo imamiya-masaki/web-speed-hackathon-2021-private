@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import { CommentItem } from '../CommentItem';
 
@@ -7,7 +7,7 @@ import { CommentItem } from '../CommentItem';
  * @property {Array<Models.Comment>} comments
  */
 
-/** @type {React.VFC<Props>} */
+
 const CommentList = ({ comments }) => {
   return (
     <div id="postdetail">

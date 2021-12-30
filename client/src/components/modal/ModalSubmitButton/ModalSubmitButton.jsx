@@ -1,6 +1,4 @@
-import classNames from 'classnames';
-import React from 'react';
-
+import {h} from 'preact'
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
 /**
@@ -8,16 +6,13 @@ import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
  * @property {string} children
  * @property {boolean} disabled
  * @property {boolean} loading
- * @property {React.MouseEventHandler<HTMLButtonElement>} onClick
+
  */
 
-/** @type {React.VFC<Props>} */
 const ModalSubmitButton = ({ children, disabled, loading, onClick }) => {
   return (
     <button
-      className={classNames('block px-8 py-2 text-white bg-green-600 rounded', {
-        'opacity-50 cursor-not-allowed': disabled,
-      })}
+      class={`block px-8 py-2 text-white bg-green-600 rounded ${disabled ? 'opacity-50 cursor-not-allowed': ''}`}
       disabled={disabled}
       onClick={onClick}
       type="submit"

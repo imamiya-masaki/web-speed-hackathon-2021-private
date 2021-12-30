@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import { getProfileImagePath } from '../../../utils/get_path';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
  * @property {Models.User} user
  */
 
-/** @type {React.VFC<Props>} */
 const UserProfileHeader = ({ user }) => {
   // 画像の平均色を取得します
   return (

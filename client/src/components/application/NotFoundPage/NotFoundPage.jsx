@@ -1,6 +1,4 @@
-import React from 'react';
-
-/** @type {React.VFC} */
+import { h } from "preact";
 const NotFoundPage = () => {
   return (
     <div className="flex flex-col items-center justify-center px-4 min-h-screen">

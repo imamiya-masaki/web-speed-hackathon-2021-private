@@ -1,6 +1,6 @@
-import React from 'react';
+import {h} from 'preact';
 
-/** @type {React.VFC} */
+
 const TermPage = () => {
   return (
     <article className="term pb-16 px-2 leading-relaxed md:pt-2 md:px-4">

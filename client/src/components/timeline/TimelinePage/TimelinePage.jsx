@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 
 import { Timeline } from '../Timeline';
 
@@ -7,7 +7,6 @@ import { Timeline } from '../Timeline';
  * @property {Array<Models.Post>} timeline
  */
 
-/** @type {React.VFC<Props>} */
 const TimelinePage = ({ timeline }) => {
   return <Timeline timeline={timeline} />;
 };
