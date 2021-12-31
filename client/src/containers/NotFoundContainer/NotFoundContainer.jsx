@@ -1,9 +1,12 @@
 import {h} from 'preact';
+import { useEffect } from 'preact/hooks';
 
 import { NotFoundPage } from '../../components/application/NotFoundPage';
 
 const NotFoundContainer = () => {
-  document.title = "ページが見つかりません - CAwitter"
+  useEffect(() => {
+    document.title = "ページが見つかりません - CAwitter"
+  })
   return (
       <NotFoundPage />
   );
