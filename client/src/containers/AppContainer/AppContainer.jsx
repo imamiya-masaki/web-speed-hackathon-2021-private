@@ -1,7 +1,7 @@
 import {h, Fragment} from 'preact'
 import Router from 'preact-router';
 import lazy from 'preact-lazy';
-import { useEffect, useState, useCallback } from 'preact/hooks';
+import { useEffect, useState, useCallback, useMemo } from 'preact/hooks';
 import { AppPage } from '../../components/application/AppPage';
 import { useFetch } from '../../hooks/use_fetch';
 import { fetchJSON } from '../../utils/fetchers';
@@ -19,10 +19,10 @@ const AppContainer = () => {
   });
 
   const [activeUser, setActiveUser] = useState(null);
-  const { data } = useFetch('/api/v1/me', fetchJSON);
+  const { data, isLoading, error} = useMemo(() => useFetch('/api/v1/me', fetchJSON));
   useEffect(() => {
     setActiveUser(data);
-  }, [data]);
+  },[data]);
 
   const [modalType, setModalType] = useState('none');
   const handleRequestOpenAuthModal = useCallback(() => setModalType('auth'), []);

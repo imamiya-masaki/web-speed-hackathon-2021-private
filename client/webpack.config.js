@@ -35,7 +35,7 @@ const config = {
       new TerserPlugin({extractComments: 'all',terserOptions: {
         compress: {drop_console: process.env.NODE_ENV === 'production'
         }}}),
-      new UglifyJsPlugin()
+      // new UglifyJsPlugin()
     ],
     minimize: process.env.NODE_ENV === 'production',
     runtimeChunk: 'single',

@@ -7,7 +7,6 @@ async function fetchBinary(url) {
     method: 'GET',
     cache: 'no-cache',
         mode: 'cors',
-    credentials: 'same-origin',
   });
   return res.arrayBuffer();
 }
@@ -22,7 +21,6 @@ async function fetchJSON(url, data) {
     method: 'GET',
     cache: 'no-cache',
     mode: 'cors',
-    credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json'
     }
@@ -63,7 +61,6 @@ async function sendJSON(url, data) {
     },
     cache: 'no-cache',
     mode: 'cors',
-    credentials: 'same-origin',
     body: JSON.stringify(data)
   })
   return res.json();

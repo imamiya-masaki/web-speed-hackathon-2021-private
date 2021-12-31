@@ -39,7 +39,7 @@ const SoundPlayer = ({ sound }) => {
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-300">
       <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={getSoundPath(sound.id)} async/>
-      <span className="span-2">
+      <div style='padding: 0.5rem'>
         <button
           className="flex items-center justify-center w-8 h-8 text-white text-sm bg-blue-600 rounded-full hover:opacity-75"
           onClick={handleTogglePlaying}
@@ -47,7 +47,7 @@ const SoundPlayer = ({ sound }) => {
         >
           <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="solid" />
         </button>
-      </span>
+      </div>
       <div className="flex flex-col flex-grow flex-shrink pt-2 min-w-0 h-full">
         <p className="whitespace-nowrap text-sm font-bold overflow-hidden overflow-ellipsis">{sound.title}</p>
         <p className="text-gray-500 whitespace-nowrap text-sm overflow-hidden overflow-ellipsis">{sound.artist}</p>
@@ -57,10 +57,10 @@ const SoundPlayer = ({ sound }) => {
               <div className="absolute inset-0 w-full h-full">
                 <SoundWaveSVG ratios={sound.soundPeak}/>
               </div>
-              <p
+              <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"
                 style={{ left: `${currentTimeRatio * 100}%` }}
-              ></p>
+              ></div>
             </div>
           </AspectRatioBox>
         </div>
