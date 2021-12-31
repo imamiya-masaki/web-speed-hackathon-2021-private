@@ -10,6 +10,7 @@
     "develop": "cross-env NODE_ENV=production webpack  serve"
   },
   "dependencies": {
+    "classnames": "2.3.1",
     "gifler": "github:themadcreator/gifler#v0.3.0",
     "normalize.css": "8.0.1",
     "omggif": "1.0.10",

@@ -29,7 +29,12 @@ const ImageArea = ({ images }) => {
             <div
               key={image.id}
               // CSS Grid で表示領域を指定する
-              className={`bg-gray-300 ${images.length === 1 ? 'col-span-2' : 'col-span-1'} ${images.length > 2 && (images.length !== 3 || idx !== 0) ? 'row-span-1': 'row-span-2'}`}
+              className={classNames('bg-gray-300', {
+                'col-span-1': images.length !== 1,
+                'col-span-2': images.length === 1,
+                'row-span-1': images.length > 2 && (images.length !== 3 || idx !== 0),
+                'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
+              })}
             >
               <CoveredImage alt={image.alt} src={getImagePath(image.id, type)} width={width} height={height} lazy={width!==494 || height !== 277}/>
             </div>
