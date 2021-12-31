@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {h} from 'preact';
 
 import { getImagePath } from '../../../utils/get_path';
