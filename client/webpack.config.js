@@ -6,6 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");  
 const glob = require('glob')
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const webpack = require('webpack');
@@ -36,6 +37,19 @@ const config = {
         compress: {drop_console: process.env.NODE_ENV === 'production'
         }}}),
       // new UglifyJsPlugin()
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: ['advanced', 
+                { 
+                  // ライセンスも含めて、コメントを全て削除する
+                  discardComments: { removeAll: true }, 
+                  // CSSの定義のソートを行う    
+                  cssDeclarationSorter : { order: 'smacss' }
+            }
+          ],
+        },
+        canPrint: true
+      })
     ],
     minimize: process.env.NODE_ENV === 'production',
     runtimeChunk: 'single',
