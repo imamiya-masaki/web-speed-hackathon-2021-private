@@ -15,11 +15,11 @@ function getImagePath(imageId, type=0) {
  * @param {string} movieId
  * @returns {string}
  */
-function getMoviePath(movieId) {
+function getWebmPath(movieId) {
   if (document.body.offsetWidth <= 401) {
-    return `/movies/${movieId}@358.gif`
+    return `/movies/${movieId}@358.webm`
   }
-  return `/movies/${movieId}.gif`;
+  return `/movies/${movieId}.webm`;
 }
 
 /**
@@ -38,4 +38,4 @@ function getProfileImagePath(profileImageId, mini=true) {
   return `/images/profiles/${mini ? 'mini' : 'normal'}-${profileImageId}${document.body.offsetWidth <= 361 ? '@mobile': ''}.avif`;
 }
 
-export { getImagePath, getMoviePath, getSoundPath, getProfileImagePath };
+export { getImagePath, getSoundPath, getProfileImagePath, getWebmPath };
