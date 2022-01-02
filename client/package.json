@@ -9,6 +9,9 @@
     "build": "cross-env NODE_ENV=production webpack ",
     "develop": "cross-env NODE_ENV=production webpack  serve"
   },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
   "dependencies": {
     "classnames": "2.3.1",
     "gifler": "github:themadcreator/gifler#v0.3.0",
