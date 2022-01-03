@@ -10,13 +10,9 @@ import { FontAwesomeIcon } from './FontAwesomeIcon';
  * @property {string} src
  */
 
-/**
- * クリックすると再生・一時停止を切り替えます。
-
- */
  const PausableMovie =  ({ src }) => {
   const animatorRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const handleClick = useCallback(() => {
     setIsPlaying((isPlaying) => {
       if (isPlaying) {
@@ -28,11 +24,10 @@ import { FontAwesomeIcon } from './FontAwesomeIcon';
     });
   }, []);
 
-
   return (
     <AspectRatioBox aspectHeight={1} aspectWidth={1}>
       <button className="group relative block w-full h-full" onClick={handleClick} type="button">
-        <video src={src} className="w-full" autoplay={!window.matchMedia('(prefers-reduced-motion: reduce)').matches} muted loop ref={animatorRef}></video>
+        <video src={src} className="w-full h-full" autoplay={isPlaying} muted loop  ref={animatorRef}></video>
         <p
           className={classNames(
             'absolute left-1/2 top-1/2 flex items-center justify-center w-16 h-16 text-white text-3xl bg-black bg-opacity-50 rounded-full transform -translate-x-1/2 -translate-y-1/2',
