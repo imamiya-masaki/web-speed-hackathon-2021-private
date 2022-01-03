@@ -41,6 +41,9 @@ const config = {
         cssProcessorPluginOptions: {
           preset: ['advanced', 
                 { 
+                  autoprefixer: {
+                    browsers: ["last 1 Chrome versions"]
+                  },
                   // ライセンスも含めて、コメントを全て削除する
                   discardComments: { removeAll: true }, 
                   // CSSの定義のソートを行う    
