@@ -14,15 +14,22 @@ const TimelineContainer = lazy(() => import('../TimelineContainer/TimelineContai
 const UserProfileContainer = lazy(() =>  import('../UserProfileContainer/UserProfileContainer'));
 
 const AppContainer = () => {
+  const [activeUser, setActiveUser] = useState(null);
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
-
-  const [activeUser, setActiveUser] = useState(null);
-  const { data, isLoading, error} = useMemo(() => useFetch('/api/v1/me', fetchJSON));
-  useEffect(() => {
-    setActiveUser(data);
-  },[data]);
+    fetch('/api/v1/me', {
+      method: 'GET',
+      cache: 'no-cache',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      if (res && res.ok) {
+        setActiveUser(res.json());
+      }
+    })
+  },[]);
 
   const [modalType, setModalType] = useState('none');
   const handleRequestOpenAuthModal = useCallback(() => setModalType('auth'), []);
