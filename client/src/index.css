@@ -3,7 +3,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import './styles/allinone.css';
+/* @import './styles/allinone.css'; */
 @import './styles/term.css';
 .term {
   font-family: 'term-font', sans-serif;
