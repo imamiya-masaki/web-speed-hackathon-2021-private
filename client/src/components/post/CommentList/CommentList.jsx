@@ -10,7 +10,7 @@ import { CommentItem } from '../CommentItem';
 
 const CommentList = ({ comments }) => {
   return (
-    <div id="postdetail">
+    <div>
       {comments.map((comment) => {
         return <CommentItem key={comment.id} comment={comment} />;
       })}

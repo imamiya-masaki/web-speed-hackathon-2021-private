@@ -14,7 +14,7 @@ const UserProfilePage = ({ timeline, user }) => {
     <Fragment>
       <UserProfileHeader user={user} />
       <div className="mt-6 border-t border-gray-300">
-        <Timeline timeline={timeline} type={'user-timeline'}/>
+        <Timeline timeline={timeline}/>
       </div>
     </Fragment>
   );

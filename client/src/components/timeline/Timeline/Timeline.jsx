@@ -13,7 +13,7 @@ const Timeline = ({ timeline, type }) => {
   バーチャルレンダリング
   */
   return (
-    <section id={type}>
+    <section>
       {timeline.map((post) => {
         return <TimelineItem key={post.id} post={post} />;
       })}
