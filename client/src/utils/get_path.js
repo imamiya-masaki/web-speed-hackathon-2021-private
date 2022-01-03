@@ -34,8 +34,8 @@ function getSoundPath(soundId) {
  * @param {string} profileImageId
  * @returns {string}
  */
-function getProfileImagePath(profileImageId, mini=true) {
-  return `/images/profiles/${mini ? 'mini' : 'normal'}-${profileImageId}${document.body.offsetWidth <= 361 ? '@mobile': ''}.avif`;
+function getProfileImagePath(profileImageId, mini=true, abWindows=false) {
+  return `/images/profiles/${mini ? 'mini' : 'normal'}-${profileImageId}${document.body.offsetWidth <= 361 && !abWindows ? '@mobile': ''}.avif`;
 }
 
 export { getImagePath, getSoundPath, getProfileImagePath, getWebmPath };
