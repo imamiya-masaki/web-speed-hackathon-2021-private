@@ -1,3 +1,5 @@
+コンテスト終了したのでpublicに
+
 # Web Speed Hackathon 2021 mini
 
 **"Web Speed Hackathon 2021 mini" は、非常に重たい Web アプリをチューニングして、いかに高速にするかを競う競技です。**
